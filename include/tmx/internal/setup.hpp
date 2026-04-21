@@ -47,8 +47,30 @@
 #if !defined(TMX_FORCE_SIMD_NONE)
 #   if defined(TMX_FORCE_SIMD_AVX) || defined(__AVX2__) || defined(__AVX__)
 #       define TMX_SIMD_AVX
+#       define TMX_SIMD_SSE4
+#       define TMX_SIMD_SSSE3
+#       define TMX_SIMD_SSE3
 #       define TMX_SIMD_SSE2
 #       define TMX_SIMD_SSE
+
+#   elif defined(TMX_FORCE_SIMD_SSE4) || defined(__SSE4_2__) || defined(__SSE4_1__)
+#       define TMX_SIMD_SSE4
+#       define TMX_SIMD_SSSE3
+#       define TMX_SIMD_SSE3
+#       define TMX_SIMD_SSE2
+#       define TMX_SIMD_SSE
+
+#   elif defined(TMX_FORCE_SIMD_SSSE3) || defined(__SSSE3__) 
+#       define TMX_SIMD_SSSE3
+#       define TMX_SIMD_SSE3
+#       define TMX_SIMD_SSE2
+#       define TMX_SIMD_SSE
+
+#   elif defined(TMX_FORCE_SIMD_SSE3) || defined(__SSE3__) 
+#       define TMX_SIMD_SSE3
+#       define TMX_SIMD_SSE2
+#       define TMX_SIMD_SSE
+
 
 #   elif defined(TMX_FORCE_SIMD_SSE2) || defined(__SSE2__)
 #       define TMX_SIMD_SSE2 
@@ -65,17 +87,35 @@
 #else 
 #   define TMX_SIMD_NONE
 
-// #   elif defined(TMX_FORCE_SIMD_SSE4_2) || defined(__SSE4_2__)
-// #       define TMX_SIMD_AVX
+#endif
+
+
+#if defined(TMX_SIMD_AVX)
+#	include <immintrin.h>
+
+#elif defined(TMX_SIMD_SSE4)
+#	include <smmintrin.h>
+
+#elif defined(TMX_SIMD_SSSE3)
+#	include <tmmintrin.h>
+
+#elif defined(TMX_SIMD_SSE3)
+#	include <pmmintrin.h>
+
+#elif defined(TMX_SIMD_SSE2)
+#	include <emmintrin.h>
+
+#elif defined(TMX_SIMD_SSE)
+#	include <xmmintrin.h>
 
 #endif
 
 
 
 
-
-
-
 #define TMX_INLINE inline // or change to forceinline
 
+
+#define TMX_STATIC_ASSERT(cond, mes) static_assert(cond, mes) 
+#define TMX_ASSERT_INDEX(i, max) static_assert(i < max, "The specified index is too large !")
 

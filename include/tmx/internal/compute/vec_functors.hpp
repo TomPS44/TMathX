@@ -1,5 +1,5 @@
 #pragma once
-#include "tmx/internal/setup.hpp"
+#include "tmx/internal/definitions.hpp"
 
 namespace tmx
 {
