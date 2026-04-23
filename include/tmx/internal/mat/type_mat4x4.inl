@@ -9,14 +9,14 @@ namespace tmx
     : columns{colType(x0, x1, x2, x3), colType(y0, y1, y2, y3), colType(z0, z1, z2, z3), colType(w0, w1, w2, w3)}
     {}
 
-    template<typename T>
-    TMX_INLINE constexpr mat<4, 4, T>::mat() noexcept
-    : columns{colType(1, 0, 0, 0), colType(0, 1, 0, 0), colType(0, 0, 1, 0), colType(0, 0, 0, 1)}
-    {}
+    // template<typename T>
+    // TMX_INLINE constexpr mat<4, 4, T>::mat() noexcept
+    // : columns{colType(1, 0, 0, 0), colType(0, 1, 0, 0), colType(0, 0, 1, 0), colType(0, 0, 0, 1)}
+    // {}
 
     template<typename T>
     TMX_INLINE constexpr mat<4, 4, T>::mat(T scalar) noexcept
-    : columns{colType(scalar), colType(scalar), colType(scalar), colType(scalar)}
+    : columns{colType(scalar, 0, 0, 0), colType(0, scalar, 0, 0), colType(0, 0, scalar, 0), colType(0, 0, 0, scalar)}
     {}
 
     template<typename T>

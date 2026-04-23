@@ -1,4 +1,5 @@
 #include "tmx/internal/compute/compute_vec.hpp"
+#include "type_vec2.hpp"
 
 namespace tmx
 {
@@ -14,6 +15,14 @@ namespace tmx
 
     template<typename T>
     TMX_INLINE constexpr vec<2, T>::vec(const vec<2, T>& v) noexcept
+    : x(v.x), y(v.y)
+    {}
+    template<typename T>
+    TMX_INLINE constexpr vec<2, T>::vec(const vec<3, T>& v) noexcept
+    : x(v.x), y(v.y)
+    {}
+    template<typename T>
+    TMX_INLINE constexpr vec<2, T>::vec(const vec<4, T>& v) noexcept
     : x(v.x), y(v.y)
     {}
 
@@ -37,7 +46,6 @@ namespace tmx
     {
         return values[i];
     }
-
 
 
 

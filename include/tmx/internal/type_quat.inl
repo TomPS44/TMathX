@@ -1,3 +1,6 @@
+#include <limits>
+#include "tmx/internal/compute/compute_quat.hpp"
+
 namespace tmx
 {
     // --- Constructors ---
@@ -9,7 +12,7 @@ namespace tmx
 
     template<typename T>
     TMX_INLINE constexpr quat<T>::quat(T qw, const vec<3, T>& xyz) noexcept
-    : w(qw), x(xyz.x), y(wyz.y), z(xyz.z)
+    : w(qw), x(xyz.x), y(xyz.y), z(xyz.z)
     {}
 
     template<typename T>
@@ -86,7 +89,7 @@ namespace tmx
     template<typename T>
     TMX_INLINE constexpr quat<T> operator-(const quat<T>& q) noexcept
     {
-        return quat<T>(q.w, -q.x, -q.y, -q.z);
+        return quat<T>(-q.w, -q.x, -q.y, -q.z);
     }
 
 
@@ -95,33 +98,29 @@ namespace tmx
     template<typename T>
     TMX_INLINE constexpr quat<T> operator+(const quat<T>& a, const quat<T>& b) noexcept
     {
-        return quat<T>(a.w + b.w, a.x + b.x, a.y + b.y, a.z + b.z);
+        return internal::quatAdd<T, internal::useSimd<4, T>::value>::call(a, b);
     }
     template<typename T>
     TMX_INLINE constexpr quat<T> operator-(const quat<T>& a, const quat<T>& b) noexcept
     {
-        return quat<T>(a.w - b.w, a.x - b.x, a.y - b.y, a.z - b.z);
+        return internal::quatSub<T, internal::useSimd<4, T>::value>::call(a, b);
     }
 
     template<typename T>
     TMX_INLINE constexpr quat<T> operator*(const quat<T>& a, const quat<T>& b) noexcept
     {
-        return quat<T>(
-            a.w * b.w - a.x * b.x - a.y * b.y - a.z * b.z,
-            a.w * b.x + a.x * b.w + a.y * b.z - a.z * b.y,
-            a.w * b.y + a.x * b.z + a.y * b.w - a.z * b.x,
-            a.w * b.z + a.x * b.y + a.y * b.x - a.z * b.w,
-        );
+        
+        return internal::quatMul<T, internal::useSimd<4, T>::value>::call(a, b);
     }
     template<typename T>
     TMX_INLINE constexpr quat<T> operator*(const quat<T>& q, T scalar) noexcept
     {
-        return quat<T>(q.w * scalar, q.x * scalar, q.y * scalar, q.z * scalar);
+        return internal::quatMul<T, internal::useSimd<4, T>::value>::call(q, scalar);
     }
     template<typename T>
     TMX_INLINE constexpr quat<T> operator*(T scalar, const quat<T>& q) noexcept
     {
-        return quat<T>(q.w * scalar, q.x * scalar, q.y * scalar, q.z * scalar);
+        return internal::quatMul<T, internal::useSimd<4, T>::value>::call(q, scalar);
     }
     template<typename T>
     TMX_INLINE constexpr vec<3, T> operator*(const quat<T>& rot, const vec<3, T>& point) noexcept
@@ -138,9 +137,31 @@ namespace tmx
 
 
     template<typename T>
-    TMX_INLINE constexpr vec<3, T> operator/(const quat<T>& q, T scalar) noexcept
+    TMX_INLINE constexpr quat<T> operator/(const quat<T>& q, T scalar) noexcept
     {
-        return quat<T>(q.w / scalar, q.x / scalar, q.y / scalar, q.z / scalar);
+        return internal::quatDiv<T, internal::useSimd<4, T>::value>::call(q, scalar);
+    }
+    template<typename T>
+    TMX_INLINE constexpr quat<T> operator/(T scalar, const quat<T>& q) noexcept
+    {
+        return internal::quatDiv<T, internal::useSimd<4, T>::value>::call(scalar, q);
+    }
+
+
+
+    template<typename T>
+    TMX_INLINE constexpr bool operator==(const quat<T>& a, const quat<T>& b) noexcept
+    {
+        return 
+            internal::computeEqual<T, std::numeric_limits<T>::is_iec559>::call(a.x, b.x) &&
+            internal::computeEqual<T, std::numeric_limits<T>::is_iec559>::call(a.y, b.y) &&
+            internal::computeEqual<T, std::numeric_limits<T>::is_iec559>::call(a.z, b.z) &&
+            internal::computeEqual<T, std::numeric_limits<T>::is_iec559>::call(a.w, b.w);
+    }
+    template<typename T>
+    TMX_INLINE constexpr bool operator!=(const quat<T>& a, const quat<T>& b) noexcept
+    {
+        return !(a == b); 
     }
 
 

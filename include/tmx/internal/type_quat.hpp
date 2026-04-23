@@ -62,7 +62,15 @@ namespace tmx
     TMX_INLINE constexpr vec<3, T> operator*(const quat<T>& q, const vec<3, T>& v) noexcept;
 
     template<typename T>
-    TMX_INLINE constexpr vec<3, T> operator/(const quat<T>& q, T scalar) noexcept;
+    TMX_INLINE constexpr quat<T> operator/(const quat<T>& q, T scalar) noexcept;
+    template<typename T>
+    TMX_INLINE constexpr quat<T> operator/(T scalar, const quat<T>& q) noexcept;
+
+
+    template<typename T>
+    TMX_INLINE constexpr bool operator==(const quat<T>& a, const quat<T>& b) noexcept;
+    template<typename T>
+    TMX_INLINE constexpr bool operator!=(const quat<T>& a, const quat<T>& b) noexcept;
 }
 
-#include "tmx/internal/quat/type_quat.inl"
+#include "tmx/internal/type_quat.inl"

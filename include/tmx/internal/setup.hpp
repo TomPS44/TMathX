@@ -111,6 +111,10 @@
 #endif
 
 
+/* #define TMX_ALIGN_AS(type) \
+       #if defined(TMX_COMPILER_MSVC) 
+           alignas(sizeof(type) * 4)
+       #endif */
 
 
 #define TMX_INLINE inline // or change to forceinline

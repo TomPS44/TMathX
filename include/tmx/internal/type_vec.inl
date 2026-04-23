@@ -34,7 +34,7 @@ namespace tmx
     template<size_t S, typename T>
     TMX_INLINE constexpr vec<S, T> operator+(T scalar, const vec<S, T>& v) noexcept
     {
-        return internal::vecAdd<S, T, internal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
+        return internal::vecAdd<S, T, internal::useSimd<S, T>::value>::call(vec<S, T>(scalar), v);
     }
 
 
@@ -47,6 +47,11 @@ namespace tmx
     TMX_INLINE constexpr vec<S, T> operator-(const vec<S, T>& v, T scalar) noexcept
     {
         return internal::vecSub<S, T, internal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
+    }
+    template<size_t S, typename T>
+    TMX_INLINE constexpr vec<S, T> operator-(T scalar, const vec<S, T>& v) noexcept
+    {
+        return internal::vecSub<S, T, internal::useSimd<S, T>::value>::call(vec<S, T>(scalar), v);
     }
 
 
@@ -76,6 +81,11 @@ namespace tmx
     TMX_INLINE constexpr vec<S, T> operator/(const vec<S, T>& v, T scalar) noexcept
     {
         return internal::vecDiv<S, T, internal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
+    }
+    template<size_t S, typename T>
+    TMX_INLINE constexpr vec<S, T> operator/(T scalar, const vec<S, T>& v) noexcept
+    {
+        return internal::vecDiv<S, T, internal::useSimd<S, T>::value>::call(vec<S, T>(scalar), v);
     }
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "tmx/internal/setup.hpp"
+
 namespace tmx
 {
     template<typename T>

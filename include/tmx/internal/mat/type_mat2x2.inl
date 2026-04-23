@@ -7,14 +7,14 @@ namespace tmx
     : columns{colType(x0, x1), colType(y0, y1)}
     {}
 
-    template<typename T>
-    TMX_INLINE constexpr mat<2, 2, T>::mat() noexcept
-    : columns{colType(1, 0), colType(0, 1)}
-    {}
+    // template<typename T>
+    // TMX_INLINE constexpr mat<2, 2, T>::mat() noexcept
+    // : columns{colType(1, 0), colType(0, 1)}
+    // {}
 
     template<typename T>
     TMX_INLINE constexpr mat<2, 2, T>::mat(T scalar) noexcept
-    : columns{colType(scalar), colType(scalar)}
+    : columns{colType(scalar, 0), colType(0, scalar)}
     {}
 
     template<typename T>

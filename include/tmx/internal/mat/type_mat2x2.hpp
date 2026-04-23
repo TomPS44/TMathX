@@ -23,8 +23,8 @@ namespace tmx
 
         TMX_INLINE constexpr mat(T x0, T y0, 
                                  T x1, T y1) noexcept;
-        TMX_INLINE constexpr mat() noexcept;
-        TMX_INLINE constexpr mat(T scalar) noexcept;
+        // TMX_INLINE constexpr mat() noexcept;
+        TMX_INLINE constexpr mat(T scalar = static_cast<T>(1.0)) noexcept;
         TMX_INLINE constexpr mat(const colType& v1, const colType& v2) noexcept;
         TMX_INLINE constexpr mat(const mat<2, 2, T>& m) noexcept;
 

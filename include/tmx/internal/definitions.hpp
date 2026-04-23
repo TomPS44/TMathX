@@ -7,7 +7,7 @@ namespace tmx
     template<size_t S, typename T> struct vec;
     template<size_t R, size_t C, typename T> struct mat;
     template<typename T> struct quat;
-    template<typename T> struct dualQuat;
+    template<typename T> struct dQuat;
 
 
     namespace internal

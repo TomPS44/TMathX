@@ -16,11 +16,15 @@ namespace tmx
     TMX_INLINE constexpr vec<S, T> operator+(const vec<S, T>& a, const vec<S, T>& b) noexcept;
     template<size_t S, typename T>
     TMX_INLINE constexpr vec<S, T> operator+(const vec<S, T>& v, T scalar) noexcept;
+    template<size_t S, typename T>
+    TMX_INLINE constexpr vec<S, T> operator+(T scalar, const vec<S, T>& v) noexcept;
 
     template<size_t S, typename T>
     TMX_INLINE constexpr vec<S, T> operator-(const vec<S, T>& a, const vec<S, T>& b) noexcept;
     template<size_t S, typename T>
     TMX_INLINE constexpr vec<S, T> operator-(const vec<S, T>& v, T scalar) noexcept;
+    template<size_t S, typename T>
+    TMX_INLINE constexpr vec<S, T> operator-(T scalar, const vec<S, T>& v) noexcept;
 
     template<size_t S, typename T>
     TMX_INLINE constexpr vec<S, T> operator*(const vec<S, T>& a, const vec<S, T>& b) noexcept;
@@ -33,6 +37,8 @@ namespace tmx
     TMX_INLINE constexpr vec<S, T> operator/(const vec<S, T>& a, const vec<S, T>& b) noexcept;
     template<size_t S, typename T>
     TMX_INLINE constexpr vec<S, T> operator/(const vec<S, T>& v, T scalar) noexcept;
+    template<size_t S, typename T>
+    TMX_INLINE constexpr vec<S, T> operator/(T scalar, const vec<S, T>& v) noexcept;
 
     template<size_t S, typename T>
     TMX_INLINE constexpr vec<S, T> operator%(const vec<S, T>& a, const vec<S, T>& b) noexcept;

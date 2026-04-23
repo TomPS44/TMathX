@@ -19,6 +19,14 @@ namespace tmx
     {}
 
     template<typename T>
+    TMX_INLINE constexpr vec<4, T>::vec(const vec<2, T>& v) noexcept
+    : x(v.x), y(v.y), z(static_cast<T>(0)), w(static_cast<T>(0))
+    {}
+    template<typename T>
+    TMX_INLINE constexpr vec<4, T>::vec(const vec<3, T>& v) noexcept
+    : x(v.x), y(v.y), z(v.z), w(static_cast<T>(0))
+    {}
+    template<typename T>
     TMX_INLINE constexpr vec<4, T>::vec(const vec<4, T>& v) noexcept
     : x(v.x), y(v.y), z(v.z), w(v.w)
     {}

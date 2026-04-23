@@ -1,21 +1,23 @@
 #include <iostream>
+#include <iomanip>
 
 #define TMX_FORCE_SIMD_NONE
 
-
-#include "tmx/internal/vec/type_vec2.hpp"
-#include "tmx/internal/vec/type_vec3.hpp"
-#include "tmx/internal/vec/type_vec4.hpp"
+#include "tmx/vec/vec_type.hpp"
+#include "tmx/vec/functions.hpp"
 
 #include "tmx/internal/mat/type_mat2x2.hpp"
 #include "tmx/internal/mat/type_mat3x3.hpp"
 #include "tmx/internal/mat/type_mat4x4.hpp"
+
+#include "tmx/quat/quat_type.hpp"
+#include "tmx/quat/dualquat_type.hpp"
+
+#include "tmx/quat/interpolation.hpp"
+
+
 namespace tmx
 { 
-typedef tmx::vec<2, float> Vec2;
-typedef tmx::vec<3, float> Vec3;
-typedef tmx::vec<4, float> Vec4;
-
 typedef tmx::mat<2, 2, float> Mat2x2;
 typedef tmx::mat<3, 3, float> Mat3x3;
 typedef tmx::mat<4, 4, float> Mat4x4;
@@ -50,35 +52,22 @@ void logMat(const tmx::mat<R, C, T>& mat)
 
 int main()
 {
-    tmx::Mat2x2 a(
-        1.0f, 2.0f,
-        3.0f, 4.0f
-    );
+    // std::cout << std::setprecision(10);
 
-    tmx::Mat2x2 b(
-        2.0f, 3.0f,
-        4.0f, 3.0f
-    );
-
-    logVec(a * tmx::Vec2(5.0f, 6.0f));
-
-
-    tmx::Mat4x4 move;
-    // move[1] = tmx::Vec4(2.0f, 2.0f, 2.0f, 1.0f);
-
-    // logMat(move);
-    // logVec4(move[3]);
-
-    // logVec4(move * tmx::Vec4(1.0f, 2.0f, 3.0f, 1.0f));
-
-    // logMat(tmx::Mat4x4(a));
-
-
-    tmx::Vec3 vec(1.0f);
+    using namespace tmx;
 
     
+    Vec4 start(0.0f, 0.0f, -12.0f, 44.44f);
+    Vec4 end(1.0f, 5.0f, 12.0f, -44.44f);
+
+    float t = 0.5f;
 
 
+
+    logVec(Vector::slerp(start, end, t));
+    
+    
+    Quat q = Quaternion::normalize(Quat(0.707f, 0.0f, 0.707f, 0.0f));
 
     
     return 0;

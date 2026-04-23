@@ -33,7 +33,7 @@ namespace tmx
         template<typename T>
         struct computeVec_oneElem<4, T>
         {
-            TMX_INLINE static constexpr vec<3, T> call(T(*Func) (T val), const vec<4, T>& v)
+            TMX_INLINE static constexpr vec<4, T> call(T(*Func) (T val), const vec<4, T>& v)
             {
                 return vec<4, T>(Func(v.x), Func(v.y), Func(v.z), Func(v.w));
             }
