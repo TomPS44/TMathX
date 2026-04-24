@@ -96,12 +96,12 @@ namespace tmx
 
 
     template<typename T>
-    TMX_INLINE constexpr T radToDeg() noexcept
+    TMX_INLINE constexpr T degToRad() noexcept
     {
         static_cast<T>(0.0174532925199432957691391462423657899L);
     }
     template<typename T>
-    TMX_INLINE constexpr T degToRad() noexcept
+    TMX_INLINE constexpr T radToDeg() noexcept
     {
         static_cast<T>(57.2957795130823208766546184023127353L);
     }

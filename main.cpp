@@ -14,6 +14,8 @@
 #include "tmx/quat/dualquat_type.hpp"
 
 #include "tmx/quat/interpolation.hpp"
+#include "tmx/quat/geometric.hpp"
+#include "tmx/quat/angle.hpp"
 
 
 namespace tmx
@@ -22,6 +24,7 @@ typedef tmx::mat<2, 2, float> Mat2x2;
 typedef tmx::mat<3, 3, float> Mat3x3;
 typedef tmx::mat<4, 4, float> Mat4x4;
 }
+
 
 
 template<size_t S, typename T>
@@ -49,26 +52,43 @@ void logMat(const tmx::mat<R, C, T>& mat)
     }
 }
 
+template<typename T>
+void logQuat(const tmx::quat<T>& qua)
+{
+    std::cout << "(";
+    for (size_t i = 0; i < 3; i++)
+    {
+        std::cout << qua.values[i] << ", ";
+    }
+    std::cout << qua.values[3];
+    std::cout << ")" << '\n';
+}
+
+
+
 
 int main()
 {
-    // std::cout << std::setprecision(10);
+    // std::cout << std::setprecision(30);
 
     using namespace tmx;
 
+
+    QuatHighP q = Quaternion::slerp(Quaternion::fromEulerYXZ(10.0, 20.0, 30.0), Quaternion::fromEulerYXZ(45.0, -30.0, 60.0), 0.5);
+
+    logVec(Quaternion::toEulerYXZ(q));
+
+    // Need to make update the slerp for vectors (unit vectors)
+
+    // For vectors, need to implement : 
+    // - Smooth Damp,
+    // - Move Towards
+    // - Step (for single numbers too)
+    // - Smooth Step (for single numbers too)
+    // - Smoother Step (for single numbers too)
+    // - Clamp Magnitude
+    // - Inverse Lerp (for single numbers too)
     
-    Vec4 start(0.0f, 0.0f, -12.0f, 44.44f);
-    Vec4 end(1.0f, 5.0f, 12.0f, -44.44f);
-
-    float t = 0.5f;
-
-
-
-    logVec(Vector::slerp(start, end, t));
-    
-    
-    Quat q = Quaternion::normalize(Quat(0.707f, 0.0f, 0.707f, 0.0f));
-
     
     return 0;
 }
