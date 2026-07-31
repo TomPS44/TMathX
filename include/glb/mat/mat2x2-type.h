@@ -1,0 +1,15 @@
+#pragma once
+
+#include "../internal/mat/type-mat2x2.h"
+
+namespace glb
+{
+    // A 2x2 Matrix of `floats`
+    using Mat2x2 = mat<2, 2, float>;
+    // A 2x2 Matrix of `doubles`
+    using Mat2x2HighP = mat<2, 2, double>;
+    // // A 2x2 Matrix of `int32_t`
+    // using Mat2x2Int = mat<2, 2, int32_t>;
+    // // A 2x2 Matrix of `int64_t`
+    // using Mat2x2Long = mat<2, 2, int64_t>;
+}

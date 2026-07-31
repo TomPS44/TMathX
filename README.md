@@ -6,8 +6,8 @@ SIMD instructions are also implemented, for devices supporting SSE, SSE2, or AVX
 
 
 ```cpp
-#include "glb/vec/vec_type.hpp"
-#include "glb/vec/functions.hpp"
+#include "glb/vec/vec_type.h"
+#include "glb/vec/functions.h"
 
 using namespace glb;
 
