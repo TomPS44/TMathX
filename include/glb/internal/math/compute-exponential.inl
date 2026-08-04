@@ -9,7 +9,6 @@ namespace glb
         template<std::integral Int>
         GLB_INLINE constexpr Int Pow(Int val, Int exponent) noexcept
         {
-            std::cout << "I" << '\n';
             Int sum = 1;
 
             for (Int i = 0; i < exponent; i++)
@@ -22,7 +21,6 @@ namespace glb
         template<std::floating_point F>
         GLB_INLINE constexpr F Pow(F val, F exponent) noexcept
         {
-            std::cout << "F" << '\n';
             return std::pow(val, exponent);
         }
         

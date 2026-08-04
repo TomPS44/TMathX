@@ -5,7 +5,7 @@ namespace glb
                                            T x1, T y1) noexcept
     // : columns{colType(x0, y0), colType(x1, y1)}
     : columns{colType(x0, x1), colType(y0, y1)}
-    {printf("Values");}
+    {}
 
     // template<typename T>
     // GLB_INLINE constexpr mat<2, 2, T>::mat() noexcept
@@ -21,7 +21,7 @@ namespace glb
     GLB_INLINE constexpr mat<2, 2, T>::mat(const colType& v1, const colType& v2) noexcept
     // : columns{v1, v2}
     : columns{colType(v1.x, v2.x), colType(v1.y, v2.y)}
-    {printf("ColType");}
+    {}
 
     template<typename T>
     GLB_INLINE constexpr mat<2, 2, T>::mat(const colType& diag) noexcept
