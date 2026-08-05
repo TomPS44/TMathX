@@ -13,9 +13,6 @@
 #endif
 
 
-
-
-
 #if !defined(GLB_FORCE_SIMD_NONE)
 #   if defined(GLB_FORCE_AVX2)
 #       define GLB_SIMD_AVX2
@@ -175,9 +172,6 @@
 
 
 
-
-
-
 #if !defined(GLB_SIMD_NONE)
 #if defined(GLB_COMPILER_MSVC) 
 #   define GLB_ALIGN_(type) __declspec(align(sizeof(type) * 4))
@@ -209,7 +203,12 @@
 #endif 
 
 
-
-#define GM_VERSION 1001
+/** Gammalgebra version :
+ * 
+ * `Major * 1'000'000 + Minor * 1'000 + Patch` 
+ * 
+ * Ex: Version 1.4.8 = 100040008
+ */
+#define GLB_VERSION 10020000
 
 

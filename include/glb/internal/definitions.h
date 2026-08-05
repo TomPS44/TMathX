@@ -5,9 +5,69 @@
 
 namespace glb
 {
+    /**
+     * @brief A vector of size `S` storing values of type `T`.
+     * 
+     * To create an alias, use :
+     * 
+     * ```cpp
+     * typedef vec<%SIZE%, %TYPE%> %NAME%;
+     * or
+     * using %NAME% = vec<%SIZE%, %TYPE%>;
+     * 
+     * 
+     * Ex: 
+     * using Vec8c = vec<8, char>;
+     * ```
+     */
     template<int S, typename T> struct vec;
+    /**
+     * @brief A matrix of size `R x C` storing values of type `T`.
+     * 
+     * To create an alias, use :
+     * 
+     * ```cpp
+     * typedef mat<%ROWS%, %COLS%, %TYPE> %NAME%;
+     * or
+     * using %NAME% = mat<%ROWS%, %COLS%, %TYPE>;
+     * 
+     * 
+     * Ex: 
+     * using Mat6x8b = mat<6, 8, bool>;
+     * ```
+     */
     template<int R, int C, typename T> struct mat;
+    /**
+     * @brief A Quaternion storing values of type `T`.
+     * 
+     * To create an alias, use :
+     * 
+     * ```cpp
+     * typedef quat<%TYPE%> %NAME%;
+     * or
+     * using %NAME% = quat<%TYPE%>;
+     * 
+     * 
+     * Ex: 
+     * using QuatHighHighP = quat<long double>;
+     * ```
+     */
     template<typename T> struct quat;
+    /**
+     * @brief A Dual Quaternion of size `S` storing values of type `T`.
+     * 
+     * To create an alias, use :
+     * 
+     * ```cpp
+     * typedef dQuat<%TYPE%> %NAME%;
+     * or
+     * using %NAME% = dQuat<%TYPE%>;
+     * 
+     * 
+     * Ex: 
+     * using DQuatf32 = dQuat<float>;
+     * ```
+     */
     template<typename T> struct dQuat;
 
 

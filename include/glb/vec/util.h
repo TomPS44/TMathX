@@ -7,19 +7,19 @@ namespace glb
     namespace glbDetail
     {
         template<typename T>
-        GLB_INLINE constexpr vec<3, T> unitX = vec<3, T>(static_cast<T>(1), static_cast<T>(0), static_cast<T>(0));
+        GLB_INLINE constexpr vec<3, T> unitX_T = vec<3, T>(static_cast<T>(1), static_cast<T>(0), static_cast<T>(0));
     
         template<typename T>
-        GLB_INLINE constexpr vec<3, T> unitY = vec<3, T>(static_cast<T>(0), static_cast<T>(1), static_cast<T>(0));
+        GLB_INLINE constexpr vec<3, T> unitY_T = vec<3, T>(static_cast<T>(0), static_cast<T>(1), static_cast<T>(0));
     
         template<typename T>
-        GLB_INLINE constexpr vec<3, T> unitZ = vec<3, T>(static_cast<T>(0), static_cast<T>(0), static_cast<T>(1));
+        GLB_INLINE constexpr vec<3, T> unitZ_T = vec<3, T>(static_cast<T>(0), static_cast<T>(0), static_cast<T>(1));
 
         template<typename T>
-        GLB_INLINE constexpr vec<3, T> zero = vec<3, T>();
+        GLB_INLINE constexpr vec<3, T> zero_T = vec<3, T>();
 
         template<typename T>
-        GLB_INLINE constexpr vec<3, T> one = vec<3, T>(static_cast<T>(1), static_cast<T>(1), static_cast<T>(1));
+        GLB_INLINE constexpr vec<3, T> one_T = vec<3, T>(static_cast<T>(1), static_cast<T>(1), static_cast<T>(1));
         
     
     } // namespace glbDetail
@@ -122,19 +122,16 @@ namespace glb
 
 
 
-        GLB_INLINE constexpr vec<3, float> UnitX = glbDetail::unitX<float>;
-        GLB_INLINE constexpr vec<3, float> UnitY = glbDetail::unitY<float>;
-        GLB_INLINE constexpr vec<3, float> UnitZ = glbDetail::unitZ<float>;
-        GLB_INLINE constexpr vec<3, float> Zero = glbDetail::zero<float>;
-        GLB_INLINE constexpr vec<3, float> One = glbDetail::one<float>;
+        GLB_INLINE constexpr vec<3, float> UnitX = glbDetail::unitX_T<float>;
+        GLB_INLINE constexpr vec<3, float> UnitY = glbDetail::unitY_T<float>;
+        GLB_INLINE constexpr vec<3, float> UnitZ = glbDetail::unitZ_T<float>;
+        GLB_INLINE constexpr vec<3, float> Zero = glbDetail::zero_T<float>;
+        GLB_INLINE constexpr vec<3, float> One = glbDetail::one_T<float>;
         
-        GLB_INLINE constexpr vec<3, int32_t> UnitXInt = glbDetail::unitX<int32_t>;
-        GLB_INLINE constexpr vec<3, int32_t> UnitYInt = glbDetail::unitY<int32_t>;
-        GLB_INLINE constexpr vec<3, int32_t> UnitZInt = glbDetail::unitZ<int32_t>;
-        GLB_INLINE constexpr vec<3, int32_t> ZeroInt = glbDetail::zero<int32_t>;
-        GLB_INLINE constexpr vec<3, int32_t> OneInt = glbDetail::one<int32_t>;
-
+        GLB_INLINE constexpr vec<3, int32_t> UnitXi32 = glbDetail::unitX_T<int32_t>;
+        GLB_INLINE constexpr vec<3, int32_t> UnitYi32 = glbDetail::unitY_T<int32_t>;
+        GLB_INLINE constexpr vec<3, int32_t> UnitZi32 = glbDetail::unitZ_T<int32_t>;
+        GLB_INLINE constexpr vec<3, int32_t> Zero_i32 = glbDetail::zero_T<int32_t>;
+        GLB_INLINE constexpr vec<3, int32_t> One_i32 = glbDetail::one_T<int32_t>;
     }
-
-    
 }

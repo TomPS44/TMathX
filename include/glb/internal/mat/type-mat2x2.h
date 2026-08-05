@@ -31,10 +31,6 @@ namespace glb
          */
         GLB_INLINE explicit constexpr mat(T scalar = static_cast<T>(1.0)) noexcept;
         /**
-         * @brief Sets the first row to `v1`, and the second one to `v2`.
-         */
-        GLB_INLINE explicit constexpr mat(const colType& v1, const colType& v2) noexcept;
-        /**
          * @brief Sets the values in the column to `diag`.
          */
         GLB_INLINE explicit constexpr mat(const colType& diag) noexcept;

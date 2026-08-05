@@ -4,8 +4,8 @@
 
 namespace glb
 {
-    // A Quaternion of `floats`
+    // A Quaternion of `float`
     using Quat = quat<float>;
-    // A Quaternion of `doubles`
-    using QuatHighP = quat<double>;
+    // A Quaternion of `double`
+    using Quat_f64 = quat<double>;
 }

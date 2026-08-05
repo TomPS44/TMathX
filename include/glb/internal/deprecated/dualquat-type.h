@@ -17,6 +17,8 @@
 
 namespace glb
 {
-    typedef dQuat<float> DQuat;
-    typedef dQuat<double> DQuatHighP;
+    // A Dual Quaternion of `float`
+    using DQuat = dQuat<float>;
+    // A Dual Quaternion of `double`
+    using DQuat_f64 = dQuat<double>;
 }

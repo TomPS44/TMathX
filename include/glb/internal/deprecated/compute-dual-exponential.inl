@@ -60,6 +60,7 @@ namespace glb
                 expReal,
                 (dq.dual * expReal) /** static_cast<T>(0.5)*/
             );
+
         }
 
 
