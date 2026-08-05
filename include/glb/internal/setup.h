@@ -209,6 +209,6 @@
  * 
  * Ex: Version 1.4.28 = 100040028
  */
-#define GLB_VERSION 1002003
+#define GLB_VERSION 1003002
 
 
