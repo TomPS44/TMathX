@@ -22,6 +22,10 @@ namespace glb
     : columns{colType(diag.x, 0), colType(0, diag.y)}
     {}
 
+    GLB_INLINE explicit constexpr mat(const colType& col1, const colType& col2) noexcept
+    : columns{colType(col1.x, col2.x), colType(col1.y, col2.y)}
+    {}
+
     template<typename T>
     GLB_INLINE constexpr mat<2, 2, T>::mat(const mat<2, 2, T>& m) noexcept
     : columns{colType(m[0]), colType(m[1])}

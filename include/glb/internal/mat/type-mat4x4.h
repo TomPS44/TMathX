@@ -27,6 +27,7 @@ namespace glb
                                  T x3, T y3, T z3, T w3) noexcept;
         GLB_INLINE explicit constexpr mat(T scalar = static_cast<T>(1.0)) noexcept;
         GLB_INLINE explicit constexpr mat(const colType& diag) noexcept;
+        GLB_INLINE explicit constexpr mat(const colType& col1, const colType& col2, const colType& col3, const colType& col4) noexcept;
         GLB_INLINE explicit constexpr mat(const mat<2, 2, T>& m) noexcept;
         GLB_INLINE explicit constexpr mat(const mat<3, 3, T>& m) noexcept;
         GLB_INLINE constexpr mat(const mat<4, 4, T>& m) noexcept;

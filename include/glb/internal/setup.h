@@ -207,8 +207,8 @@
  * 
  * `Major * 1'000'000 + Minor * 1'000 + Patch` 
  * 
- * Ex: Version 1.4.8 = 100040008
+ * Ex: Version 1.4.28 = 100040028
  */
-#define GLB_VERSION 10020000
+#define GLB_VERSION 1002003
 
 

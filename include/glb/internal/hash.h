@@ -117,11 +117,6 @@ namespace std
             size_t res = 0;
             hash<glb::vec<3, T>> hasher;
 
-            hash<glb::vec<3, T>> hasher;
-            hash<glb::mat<3, 3, T>> hasher;
-            hash<glb::quat<T>> hasher;
-            hash<glb::dQuat<T>> hasher;
-
             glb::glbInternal::hashCombine(res, hasher(v[0]));
             glb::glbInternal::hashCombine(res, hasher(v[1]));
             glb::glbInternal::hashCombine(res, hasher(v[2]));
