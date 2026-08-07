@@ -35,9 +35,9 @@ namespace glb
          */
         GLB_INLINE explicit constexpr mat(const colType& diag) noexcept;
         /**
-         * @brief Sets the first column to `col1`, and the second column to `col2`.
+         * @brief Sets the first column to `col0`, and the second column to `col1`.
          */
-        GLB_INLINE explicit constexpr mat(const colType& col1, const colType& col2) noexcept;
+        GLB_INLINE explicit constexpr mat(const colType& col0, const colType& col1) noexcept;
         /**
          * @brief Copy constructor.
          */

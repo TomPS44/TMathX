@@ -24,8 +24,8 @@ namespace glb
     {}
 
     template<typename T>
-    GLB_INLINE constexpr mat<3, 3, T>::mat(const colType& col1, const colType& col2, const colType& col3) noexcept
-    : columns{colType(col1.x, col2.x, col3.x), colType(col1.y, col2.y, col3.y), colType(col1.z, col2.z, col3.z)}
+    GLB_INLINE constexpr mat<3, 3, T>::mat(const colType& col0, const colType& col1, const colType& col2) noexcept
+    : columns{col0, col1, col2}
     {}
 
     template<typename T>
