@@ -1,9 +1,9 @@
 #include "vec-geometric.inl"
-#include "glb/vec/geometric.h"
+#include "../../vec/geometric.h"
 
 namespace glb
 {
-    namespace glbInternal
+    namespace glbIntern
     {
 
 #       if defined(GLB_SIMD_SSE)
@@ -11,13 +11,13 @@ namespace glb
         template<>
         struct matInverse<3, 3, float, true>
         {
-            GLB_INLINE static mat<3, 3, float> call(const mat<3, 3, float>& m) noexcept
+            GLB_INLINE static glbMat_T<3, 3, float> call(const glbMat_T<3, 3, float>& m) noexcept
             {
-                mat<3, 3, float> res;
+                glbMat_T<3, 3, float> res;
 
-                const vec<3, float> a = m[0];
-                const vec<3, float> b = m[1];
-                const vec<3, float> c = m[2];
+                const glbVec_T<3, float> a = m[0];
+                const glbVec_T<3, float> b = m[1];
+                const glbVec_T<3, float> c = m[2];
 
                 res[0] = Vec::Cross(b, c);
                 res[1] = Vec::Cross(c, a);
@@ -34,13 +34,13 @@ namespace glb
         template<>
         struct matInverseTranspose<3, 3, float, true>
         {
-            GLB_INLINE static mat<3, 3, float> call(const mat<3, 3, float>& m) noexcept
+            GLB_INLINE static glbMat_T<3, 3, float> call(const glbMat_T<3, 3, float>& m) noexcept
             {
-                mat<3, 3, float> res;
+                glbMat_T<3, 3, float> res;
 
-                const vec<3, float> a = m[0];
-                const vec<3, float> b = m[1];
-                const vec<3, float> c = m[2];
+                const glbVec_T<3, float> a = m[0];
+                const glbVec_T<3, float> b = m[1];
+                const glbVec_T<3, float> c = m[2];
 
                 res[0] = Vec::Cross(b, c);
                 res[1] = Vec::Cross(c, a);
@@ -59,11 +59,11 @@ namespace glb
         template<>
         struct matInverse<4, 4, float, true>
         {
-            GLB_INLINE static mat<4, 4, float> call(const mat<4, 4, float>& m) noexcept
+            GLB_INLINE static glbMat_T<4, 4, float> call(const glbMat_T<4, 4, float>& m) noexcept
             {
                 // source : https://github.com/icaven/glm/blob/master/glm/simd/matrix.h
 
-                mat<4, 4, float> res;
+                glbMat_T<4, 4, float> res;
 
                 __m128 fac0;
 	            {
@@ -279,7 +279,7 @@ namespace glb
 	            //						+ m[0][1] * Inverse[1][0]
 	            //						+ m[0][2] * Inverse[2][0]
 	            //						+ m[0][3] * Inverse[3][0];
-	            const __m128 invDet = _mm_div_ps(_mm_set1_ps(1.0f), glbInternal::vecDot__m128(m[0].reg, row2));
+	            const __m128 invDet = _mm_div_ps(_mm_set1_ps(1.0f), glbIntern::vecDot__m128(m[0].reg, row2));
             
 	            //	Inverse /= Determinant;
 	            res[0].reg = _mm_mul_ps(inv0, invDet);
@@ -298,11 +298,11 @@ namespace glb
         template<>
         struct matInverseTranspose<4, 4, float, true>
         {
-            GLB_INLINE static mat<4, 4, float> call(const mat<4, 4, float>& m) noexcept
+            GLB_INLINE static glbMat_T<4, 4, float> call(const glbMat_T<4, 4, float>& m) noexcept
             {
                 // source : https://github.com/icaven/glm/blob/master/glm/simd/matrix.h
 
-                mat<4, 4, float> res;
+                glbMat_T<4, 4, float> res;
 
                 __m128 fac0;
 	            {
@@ -518,7 +518,7 @@ namespace glb
 	            //						+ m[0][1] * Inverse[1][0]
 	            //						+ m[0][2] * Inverse[2][0]
 	            //						+ m[0][3] * Inverse[3][0];
-	            const __m128 invDet = _mm_div_ps(_mm_set1_ps(1.0f), glbInternal::vecDot__m128(m[0].reg, row2));
+	            const __m128 invDet = _mm_div_ps(_mm_set1_ps(1.0f), glbIntern::vecDot__m128(m[0].reg, row2));
             
 	            //	Inverse /= Determinant;
 	            res[0].reg = _mm_mul_ps(inv0, invDet);

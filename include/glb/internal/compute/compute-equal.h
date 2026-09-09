@@ -4,7 +4,7 @@
 
 namespace glb
 {
-    namespace glbInternal
+    namespace glbIntern
     {
         template<typename T, bool isFloating>
         struct computeEqual {};

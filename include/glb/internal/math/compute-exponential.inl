@@ -120,12 +120,7 @@ namespace glb
         { 
             return std::bit_ceil(val);
         } 
-
         
-
-        
-        
-
     } // namespace Math
 } // namespace glb
 

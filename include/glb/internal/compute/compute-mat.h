@@ -3,7 +3,7 @@
 
 namespace glb
 {
-    namespace glbInternal
+    namespace glbIntern
     {
         // template<int R, int C, typename T, bool useSimd>
         // struct matAdd {};
@@ -24,33 +24,33 @@ namespace glb
         template<int R, int C, typename T, bool useSimd>
         struct matAdd
         {
-            GLB_INLINE static constexpr mat<R, C, T> call(const mat<R, C, T>& a, const mat<R, C, T>& b)
+            GLB_INLINE static constexpr glbMat_T<R, C, T> call(const glbMat_T<R, C, T>& a, const glbMat_T<R, C, T>& b)
             {
-                return glbInternal::computeMat_twoElem<R, C, T>::call(
+                return glbIntern::computeMat_twoElem<R, C, T>::call(
                     [](T a, T b) -> T
                     { return a + b; },
                     a, b
                 );
             }
 
-            GLB_INLINE static constexpr mat<2, 2, T> call(const mat<2, 2, T>& m, T scalar)
+            GLB_INLINE static constexpr glbMat_T<2, 2, T> call(const glbMat_T<2, 2, T>& m, T scalar)
             {
-                return mat<2, 2, T>(
+                return glbMat_T<2, 2, T>(
                     m[0] + scalar,
                     m[1] + scalar
                 );
             }
-            GLB_INLINE static constexpr mat<3, 3, T> call(const mat<3, 3, T>& m, T scalar)
+            GLB_INLINE static constexpr glbMat_T<3, 3, T> call(const glbMat_T<3, 3, T>& m, T scalar)
             {
-                return mat<3, 3, T>(
+                return glbMat_T<3, 3, T>(
                     m[0] + scalar,
                     m[1] + scalar,
                     m[2] + scalar
                 );
             }
-            GLB_INLINE static constexpr mat<4, 4, T> call(const mat<4, 4, T>& m, T scalar)
+            GLB_INLINE static constexpr glbMat_T<4, 4, T> call(const glbMat_T<4, 4, T>& m, T scalar)
             {
-                return mat<4, 4, T>(
+                return glbMat_T<4, 4, T>(
                     m[0] + scalar,
                     m[1] + scalar,
                     m[2] + scalar,
@@ -62,33 +62,33 @@ namespace glb
         template<int R, int C, typename T, bool useSimd>
         struct matSub
         {
-            GLB_INLINE static constexpr mat<R, C, T> call(const mat<R, C, T>& a, const mat<R, C, T>& b)
+            GLB_INLINE static constexpr glbMat_T<R, C, T> call(const glbMat_T<R, C, T>& a, const glbMat_T<R, C, T>& b)
             {
-                return glbInternal::computeMat_twoElem<R, C, T>::call(
+                return glbIntern::computeMat_twoElem<R, C, T>::call(
                     [](T a, T b) -> T
                     { return a - b; },
                     a, b
                 );
             }
 
-            GLB_INLINE static constexpr mat<2, 2, T> call(const mat<2, 2, T>& m, T scalar)
+            GLB_INLINE static constexpr glbMat_T<2, 2, T> call(const glbMat_T<2, 2, T>& m, T scalar)
             {
-                return mat<2, 2, T>(
+                return glbMat_T<2, 2, T>(
                     m[0] - scalar,
                     m[1] - scalar
                 );
             }
-            GLB_INLINE static constexpr mat<3, 3, T> call(const mat<3, 3, T>& m, T scalar)
+            GLB_INLINE static constexpr glbMat_T<3, 3, T> call(const glbMat_T<3, 3, T>& m, T scalar)
             {
-                return mat<3, 3, T>(
+                return glbMat_T<3, 3, T>(
                     m[0] - scalar,
                     m[1] - scalar,
                     m[2] - scalar
                 );
             }
-            GLB_INLINE static constexpr mat<4, 4, T> call(const mat<4, 4, T>& m, T scalar)
+            GLB_INLINE static constexpr glbMat_T<4, 4, T> call(const glbMat_T<4, 4, T>& m, T scalar)
             {
-                return mat<4, 4, T>(
+                return glbMat_T<4, 4, T>(
                     m[0] - scalar,
                     m[1] - scalar,
                     m[2] - scalar,
@@ -100,9 +100,9 @@ namespace glb
         template<typename T, bool useSimd>
         struct matMul<2, 2, T, useSimd>
         {
-            GLB_INLINE static constexpr mat<2, 2, T> call(const mat<2, 2, T>& a, const mat<2, 2, T>& b)
+            GLB_INLINE static constexpr glbMat_T<2, 2, T> call(const glbMat_T<2, 2, T>& a, const glbMat_T<2, 2, T>& b)
             {
-                return mat<2, 2, T>(
+                return glbMat_T<2, 2, T>(
                     a[0][0] * b[0][0] + a[1][0] * b[0][1], 
                     a[0][0] * b[1][0] + a[1][0] * b[1][1],
                     a[0][1] * b[0][0] + a[1][1] * b[0][1],
@@ -111,15 +111,15 @@ namespace glb
             }
             
 
-            GLB_INLINE static constexpr mat<2, 2, T> call(const mat<2, 2, T>& m, T scalar)
+            GLB_INLINE static constexpr glbMat_T<2, 2, T> call(const glbMat_T<2, 2, T>& m, T scalar)
             {
-                return mat<2, 2, T>(
+                return glbMat_T<2, 2, T>(
                     m[0] * scalar,
                     m[1] * scalar
                 );
             }
 
-            GLB_INLINE static constexpr typename mat<2, 2, T>::colType call(const mat<2, 2, T>& m, const typename mat<2, 2, T>::colType& v)
+            GLB_INLINE static constexpr typename glbMat_T<2, 2, T>::colType call(const glbMat_T<2, 2, T>& m, const typename glbMat_T<2, 2, T>::colType& v)
             {
                 return m[0] * v.x + m[1] * v.y;
             }
@@ -127,25 +127,25 @@ namespace glb
         template<typename T, bool useSimd>
         struct matMul<3, 3, T, useSimd>
         { 
-            GLB_INLINE static constexpr mat<3, 3, T> call(const mat<3, 3, T>& m, T scalar)
+            GLB_INLINE static constexpr glbMat_T<3, 3, T> call(const glbMat_T<3, 3, T>& m, T scalar)
             {
-                return mat<3, 3, T>(
+                return glbMat_T<3, 3, T>(
                     m[0] * scalar,
                     m[1] * scalar,
                     m[2] * scalar
                 );
             }
 
-            GLB_INLINE static constexpr typename mat<3, 3, T>::colType call(const mat<3, 3, T>& m, const typename mat<3, 3, T>::colType& v)
+            GLB_INLINE static constexpr typename glbMat_T<3, 3, T>::colType call(const glbMat_T<3, 3, T>& m, const typename glbMat_T<3, 3, T>::colType& v)
             {
                 return m[0] * v.x + m[1] * v.y + m[2] * v.z;
             }
 
-            GLB_INLINE static constexpr mat<3, 3, T> call(const mat<3, 3, T>& a, const mat<3, 3, T>& b)
+            GLB_INLINE static constexpr glbMat_T<3, 3, T> call(const glbMat_T<3, 3, T>& a, const glbMat_T<3, 3, T>& b)
             {
-                mat<3, 3, T> res;
+                glbMat_T<3, 3, T> res;
 
-                typename mat<3, 3, T>::colType vec;
+                typename glbMat_T<3, 3, T>::colType vec;
 
                 vec = a[0] * b[0][0];
                 vec += a[1] * b[0][1];
@@ -174,14 +174,14 @@ namespace glb
         template<typename T, bool useSimd>
         struct matMul<4, 4, T, useSimd>
         { 
-            GLB_INLINE static constexpr typename mat<4, 4, T>::colType call(const mat<4, 4, T>& m, const typename mat<4, 4, T>::colType& v)
+            GLB_INLINE static constexpr typename glbMat_T<4, 4, T>::colType call(const glbMat_T<4, 4, T>& m, const typename glbMat_T<4, 4, T>::colType& v)
             {
                 return m[0] * v.x + m[1] * v.y + m[2] * v.z + m[3] * v.w;
             }
 
-            GLB_INLINE static constexpr mat<4, 4, T> call(const mat<4, 4, T>& m, T scalar)
+            GLB_INLINE static constexpr glbMat_T<4, 4, T> call(const glbMat_T<4, 4, T>& m, T scalar)
             {
-                return mat<4, 4, T>(
+                return glbMat_T<4, 4, T>(
                     m[0] * scalar,
                     m[1] * scalar,
                     m[2] * scalar,
@@ -189,11 +189,11 @@ namespace glb
                 );
             }
 
-            GLB_INLINE static constexpr mat<4, 4, T> call(const mat<4, 4, T>& a, const mat<4, 4, T>& b)
+            GLB_INLINE static constexpr glbMat_T<4, 4, T> call(const glbMat_T<4, 4, T>& a, const glbMat_T<4, 4, T>& b)
             {
-                 mat<4, 4, T> res;
+                 glbMat_T<4, 4, T> res;
 
-                typename mat<4, 4, T>::colType vec;
+                typename glbMat_T<4, 4, T>::colType vec;
 
                 vec = a[0] * b[0][0];
                 vec += a[1] * b[0][1];
@@ -232,24 +232,24 @@ namespace glb
         template<int R, int C, typename T, bool useSimd>
         struct matDiv
         {
-            GLB_INLINE static constexpr mat<2, 2, T> call(const mat<2, 2, T>& m, T scalar)
+            GLB_INLINE static constexpr glbMat_T<2, 2, T> call(const glbMat_T<2, 2, T>& m, T scalar)
             {
-                return mat<2, 2, T>(
+                return glbMat_T<2, 2, T>(
                     m[0] / scalar,
                     m[1] / scalar
                 );
             }
-            GLB_INLINE static constexpr mat<3, 3, T> call(const mat<3, 3, T>& m, T scalar)
+            GLB_INLINE static constexpr glbMat_T<3, 3, T> call(const glbMat_T<3, 3, T>& m, T scalar)
             {
-                return mat<3, 3, T>(
+                return glbMat_T<3, 3, T>(
                     m[0] / scalar,
                     m[1] / scalar,
                     m[2] / scalar
                 );
             }
-            GLB_INLINE static constexpr mat<4, 4, T> call(const mat<4, 4, T>& m, T scalar)
+            GLB_INLINE static constexpr glbMat_T<4, 4, T> call(const glbMat_T<4, 4, T>& m, T scalar)
             {
-                return mat<4, 4, T>(
+                return glbMat_T<4, 4, T>(
                     m[0] / scalar,
                     m[1] / scalar,
                     m[2] / scalar,
@@ -264,9 +264,9 @@ namespace glb
         template<int R, int C, typename T, bool useSimd>
         struct matNeg
         {
-            GLB_INLINE static constexpr mat<R, C, T> call(const mat<R, C, T>& m)
+            GLB_INLINE static constexpr glbMat_T<R, C, T> call(const glbMat_T<R, C, T>& m)
             {
-                return glbInternal::computeMat_oneElem<R, C, T>::call(
+                return glbIntern::computeMat_oneElem<R, C, T>::call(
                     [](T a) -> T
                     { return -a; },
                     m
@@ -280,7 +280,7 @@ namespace glb
         template<typename T>
         struct matEqual<2, 2, T>
         {
-            GLB_INLINE static constexpr bool call(const mat<2, 2, T>& a, const mat<2, 2, T>& b)
+            GLB_INLINE static constexpr bool call(const glbMat_T<2, 2, T>& a, const glbMat_T<2, 2, T>& b)
             {
                 return a[0] == b[0] && a[1] == b[1]; 
             }
@@ -288,7 +288,7 @@ namespace glb
         template<typename T>
         struct matEqual<3, 3, T>
         {
-            GLB_INLINE static constexpr bool call(const mat<3, 3, T>& a, const mat<3, 3, T>& b)
+            GLB_INLINE static constexpr bool call(const glbMat_T<3, 3, T>& a, const glbMat_T<3, 3, T>& b)
             {
                 return a[0] == b[0] && a[1] == b[1] && a[2] == b[2]; 
             }
@@ -296,7 +296,7 @@ namespace glb
         template<typename T>
         struct matEqual<4, 4, T>
         {
-            GLB_INLINE static constexpr bool call(const mat<4, 4, T>& a, const mat<4, 4, T>& b)
+            GLB_INLINE static constexpr bool call(const glbMat_T<4, 4, T>& a, const glbMat_T<4, 4, T>& b)
             {
                 return a[0] == b[0] && a[1] == b[1] && a[2] == b[2] && a[3] == b[3]; 
             }

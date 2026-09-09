@@ -1,6 +1,6 @@
 namespace glb
 {
-    namespace glbInternal
+    namespace glbIntern
     {
     
 #       if defined(GLB_SIMD_SSE)
@@ -8,9 +8,9 @@ namespace glb
         template<>
         struct matAdd<4, 4, float, true> 
         {
-            GLB_INLINE static mat<4, 4, float> call(const mat<4, 4, float>& a, const mat<4, 4, float>& b)
+            GLB_INLINE static glbMat_T<4, 4, float> call(const glbMat_T<4, 4, float>& a, const glbMat_T<4, 4, float>& b)
             {
-                mat<4, 4, float> res;
+                glbMat_T<4, 4, float> res;
 
                 res[0].reg = _mm_add_ps(a[0].reg, b[0].reg);
                 res[1].reg = _mm_add_ps(a[1].reg, b[1].reg);
@@ -20,9 +20,9 @@ namespace glb
                 return res;
             }
         
-            GLB_INLINE static mat<4, 4, float> call(const mat<4, 4, float>& m, float scalar)
+            GLB_INLINE static glbMat_T<4, 4, float> call(const glbMat_T<4, 4, float>& m, float scalar)
             {
-                mat<4, 4, float> res;
+                glbMat_T<4, 4, float> res;
                 const __m128 scalarReg = _mm_set1_ps(scalar);
 
                 res[0].reg = _mm_add_ps(m[0].reg, scalarReg);
@@ -37,9 +37,9 @@ namespace glb
         template<>
         struct matSub<4, 4, float, true> 
         {
-            GLB_INLINE static mat<4, 4, float> call(const mat<4, 4, float>& a, const mat<4, 4, float>& b)
+            GLB_INLINE static glbMat_T<4, 4, float> call(const glbMat_T<4, 4, float>& a, const glbMat_T<4, 4, float>& b)
             {
-                mat<4, 4, float> res;
+                glbMat_T<4, 4, float> res;
 
                 res[0].reg = _mm_sub_ps(a[0].reg, b[0].reg);
                 res[1].reg = _mm_sub_ps(a[1].reg, b[1].reg);
@@ -49,9 +49,9 @@ namespace glb
                 return res;
             }
         
-            GLB_INLINE static mat<4, 4, float> call(const mat<4, 4, float>& m, float scalar)
+            GLB_INLINE static glbMat_T<4, 4, float> call(const glbMat_T<4, 4, float>& m, float scalar)
             {
-                mat<4, 4, float> res;
+                glbMat_T<4, 4, float> res;
                 const __m128 scalarReg = _mm_set1_ps(scalar);
 
                 res[0].reg = _mm_sub_ps(m[0].reg, scalarReg);
@@ -66,9 +66,9 @@ namespace glb
         template<>
         struct matMul<4, 4, float, true> 
         {
-            GLB_INLINE static mat<4, 4, float> call(const mat<4, 4, float>& a, const mat<4, 4, float>& b)
+            GLB_INLINE static glbMat_T<4, 4, float> call(const glbMat_T<4, 4, float>& a, const glbMat_T<4, 4, float>& b)
             {
-                mat<4, 4, float> res;
+                glbMat_T<4, 4, float> res;
 
                 res[0].reg = _mm_add_ps(
                     _mm_add_ps(_mm_mul_ps(a[0].reg, _mm_set1_ps(b[0][0])), _mm_mul_ps(a[1].reg, _mm_set1_ps(b[0][1]))),
@@ -93,9 +93,9 @@ namespace glb
                 return res;
             }
         
-            GLB_INLINE static mat<4, 4, float> call(const mat<4, 4, float>& m, float scalar)
+            GLB_INLINE static glbMat_T<4, 4, float> call(const glbMat_T<4, 4, float>& m, float scalar)
             {
-                mat<4, 4, float> res;
+                glbMat_T<4, 4, float> res;
                 const __m128 scalarReg = _mm_set1_ps(scalar);
 
                 res[0].reg = _mm_mul_ps(m[0].reg, scalarReg);
@@ -106,9 +106,9 @@ namespace glb
                 return res;
             }
 
-            GLB_INLINE static vec<4, float> call(const mat<4, 4, float>& m, const vec<4, float>& v)
+            GLB_INLINE static glbVec_T<4, float> call(const glbMat_T<4, 4, float>& m, const glbVec_T<4, float>& v)
             {
-                vec<4, float> res;
+                glbVec_T<4, float> res;
 
                 res.reg = _mm_add_ps(
                     _mm_add_ps(_mm_mul_ps(m[0].reg, _mm_set1_ps(v.x)), _mm_mul_ps(m[1].reg, _mm_set1_ps(v.y))),
@@ -122,9 +122,9 @@ namespace glb
         template<>
         struct matDiv<4, 4, float, true> 
         {        
-            GLB_INLINE static mat<4, 4, float> call(const mat<4, 4, float>& m, float scalar)
+            GLB_INLINE static glbMat_T<4, 4, float> call(const glbMat_T<4, 4, float>& m, float scalar)
             {
-                mat<4, 4, float> res;
+                glbMat_T<4, 4, float> res;
                 const __m128 scalarReg = _mm_set1_ps(scalar);
 
                 res[0].reg = _mm_div_ps(m[0].reg, scalarReg);
@@ -140,9 +140,9 @@ namespace glb
         template<>
         struct matNeg<4, 4, float, true> 
         {
-            GLB_INLINE static mat<4, 4, float> call(const mat<4, 4, float>& m)
+            GLB_INLINE static glbMat_T<4, 4, float> call(const glbMat_T<4, 4, float>& m)
             {
-                mat<4, 4, float> res;
+                glbMat_T<4, 4, float> res;
                 const __m128 m1Reg = _mm_set1_ps(-1.0f);
 
                 res[0].reg = _mm_mul_ps(m[0].reg, m1Reg);
@@ -163,9 +163,9 @@ namespace glb
         template<>
         struct matAdd<4, 4, double, true> 
         {
-            GLB_INLINE static mat<4, 4, double> call(const mat<4, 4, double>& a, const mat<4, 4, double>& b)
+            GLB_INLINE static glbMat_T<4, 4, double> call(const glbMat_T<4, 4, double>& a, const glbMat_T<4, 4, double>& b)
             {
-                mat<4, 4, double> res;
+                glbMat_T<4, 4, double> res;
 
                 res[0].reg = _mm256_add_pd(a[0].reg, b[0].reg);
                 res[1].reg = _mm256_add_pd(a[1].reg, b[1].reg);
@@ -175,9 +175,9 @@ namespace glb
                 return res;
             }
         
-            GLB_INLINE static mat<4, 4, double> call(const mat<4, 4, double>& m, double scalar)
+            GLB_INLINE static glbMat_T<4, 4, double> call(const glbMat_T<4, 4, double>& m, double scalar)
             {
-                mat<4, 4, double> res;
+                glbMat_T<4, 4, double> res;
                 const __m256d scalarReg = _mm256_set1_pd(scalar);
 
                 res[0].reg = _mm256_add_pd(m[0].reg, scalarReg);
@@ -192,9 +192,9 @@ namespace glb
         template<>
         struct matSub<4, 4, double, true> 
         {
-            GLB_INLINE static mat<4, 4, double> call(const mat<4, 4, double>& a, const mat<4, 4, double>& b)
+            GLB_INLINE static glbMat_T<4, 4, double> call(const glbMat_T<4, 4, double>& a, const glbMat_T<4, 4, double>& b)
             {
-                mat<4, 4, double> res;
+                glbMat_T<4, 4, double> res;
 
                 res[0].reg = _mm256_sub_pd(a[0].reg, b[0].reg);
                 res[1].reg = _mm256_sub_pd(a[1].reg, b[1].reg);
@@ -204,9 +204,9 @@ namespace glb
                 return res;
             }
         
-            GLB_INLINE static mat<4, 4, double> call(const mat<4, 4, double>& m, double scalar)
+            GLB_INLINE static glbMat_T<4, 4, double> call(const glbMat_T<4, 4, double>& m, double scalar)
             {
-                mat<4, 4, double> res;
+                glbMat_T<4, 4, double> res;
                 const __m256d scalarReg = _mm256_set1_pd(scalar);
 
                 res[0].reg = _mm256_sub_pd(m[0].reg, scalarReg);
@@ -221,9 +221,9 @@ namespace glb
         template<>
         struct matMul<4, 4, double, true> 
         {
-            GLB_INLINE static mat<4, 4, double> call(const mat<4, 4, double>& a, const mat<4, 4, double>& b)
+            GLB_INLINE static glbMat_T<4, 4, double> call(const glbMat_T<4, 4, double>& a, const glbMat_T<4, 4, double>& b)
             {
-                mat<4, 4, double> res;
+                glbMat_T<4, 4, double> res;
 
                 res[0].reg = _mm256_add_pd(
                     _mm256_add_pd(_mm256_mul_pd(a[0].reg, _mm256_set1_pd(b[0][0])), _mm256_mul_pd(a[1].reg, _mm256_set1_pd(b[0][1]))),
@@ -248,9 +248,9 @@ namespace glb
                 return res;
             }
         
-            GLB_INLINE static mat<4, 4, double> call(const mat<4, 4, double>& m, double scalar)
+            GLB_INLINE static glbMat_T<4, 4, double> call(const glbMat_T<4, 4, double>& m, double scalar)
             {
-                mat<4, 4, double> res;
+                glbMat_T<4, 4, double> res;
                 const __m256d scalarReg = _mm256_set1_pd(scalar);
 
                 res[0].reg = _mm256_mul_pd(m[0].reg, scalarReg);
@@ -261,9 +261,9 @@ namespace glb
                 return res;
             }
 
-            GLB_INLINE static vec<4, double> call(const mat<4, 4, double>& m, const vec<4, double>& v)
+            GLB_INLINE static glbVec_T<4, double> call(const glbMat_T<4, 4, double>& m, const glbVec_T<4, double>& v)
             {
-                vec<4, double> res;
+                glbVec_T<4, double> res;
 
                 res.reg = _mm256_add_pd(
                     _mm256_add_pd(_mm256_mul_pd(m[0].reg, _mm256_set1_pd(v.x)), _mm256_mul_pd(m[1].reg, _mm256_set1_pd(v.y))),
@@ -277,9 +277,9 @@ namespace glb
         template<>
         struct matDiv<4, 4, double, true> 
         {        
-            GLB_INLINE static mat<4, 4, double> call(const mat<4, 4, double>& m, double scalar)
+            GLB_INLINE static glbMat_T<4, 4, double> call(const glbMat_T<4, 4, double>& m, double scalar)
             {
-                mat<4, 4, double> res;
+                glbMat_T<4, 4, double> res;
                 const __m256d scalarReg = _mm256_set1_pd(scalar);
 
                 res[0].reg = _mm256_div_pd(m[0].reg, scalarReg);
@@ -295,9 +295,9 @@ namespace glb
         template<>
         struct matNeg<4, 4, double, true> 
         {
-            GLB_INLINE static mat<4, 4, double> call(const mat<4, 4, double>& m)
+            GLB_INLINE static glbMat_T<4, 4, double> call(const glbMat_T<4, 4, double>& m)
             {
-                mat<4, 4, double> res;
+                glbMat_T<4, 4, double> res;
                 const __m256d m1Reg = _mm256_set1_pd(-1.0f);
 
                 res[0].reg = _mm256_mul_pd(m[0].reg, m1Reg);

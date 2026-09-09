@@ -4,17 +4,17 @@ namespace glb
     {
 
         template<typename T>
-        GLB_INLINE constexpr mat<3, 3, T> Scale_3x3(const vec<3, T>& scale) noexcept
+        GLB_INLINE constexpr glbMat_T<3, 3, T> Scale_3x3(const glbVec_T<3, T>& scale) noexcept
         {
-            return mat<3, 3, T>(
+            return glbMat_T<3, 3, T>(
                 scale
             );
         }
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Scale_4x4(const vec<3, T>& scale) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Scale_4x4(const glbVec_T<3, T>& scale) noexcept
         {
-            return mat<4, 4, T>(
-                vec<4, T>(
+            return glbMat_T<4, 4, T>(
+                glbVec_T<4, T>(
                     scale, static_cast<T>(1)
                 )
             );

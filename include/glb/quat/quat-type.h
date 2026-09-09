@@ -4,8 +4,9 @@
 
 namespace glb
 {
+#if !defined(GLB_FORCE_NO_ALIAS)
     // A Quaternion of `float`
-    using Quat = quat<float>;
-    // A Quaternion of `double`
-    using Quat_f64 = quat<double>;
+    using Quat = glbQuat_T<float>;
+
+#endif
 }

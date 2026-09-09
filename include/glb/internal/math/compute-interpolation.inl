@@ -1,4 +1,4 @@
-#include "glb/math/common.h"
+#include "../../math/common.h"
 
 namespace glb
 {
@@ -57,6 +57,7 @@ namespace glb
                                                   T smoothTime, T deltaTime, T maxSpeed) noexcept
         {
             // Based on Game Programming Gems 4 Chapter 1.10
+            
             smoothTime = std::max(static_cast<T>(0.0001), smoothTime);
             T omega = static_cast<T>(2) / smoothTime;
 

@@ -14,49 +14,49 @@
  
 #include <cmath>
 #include "../type-vec.h"
-#include "glb/vec/geometric.h"
-#include "glb/quat/exponential.h"
-#include "glb/quat/geometric.h"
+#include "../../vec/geometric.h"
+#include "../../quat/exponential.h"
+#include "../../quat/geometric.h"
 
 namespace glb
 {
     namespace DQua
     {
         template<typename T>
-        GLB_INLINE constexpr dQuat<T> Log(const dQuat<T>& dq) noexcept
+        GLB_INLINE constexpr glbDQuat_T<T> Log(const glbDQuat_T<T>& dq) noexcept
         {
-            dQuat<T> copy = dq;
+            glbDQuat_T<T> copy = dq;
 
             if (copy.real.w < static_cast<T>(0))
             {
                 copy = -copy;
             }
 
-            return dQuat<T>(
+            return glbDQuat_T<T>(
                 Qua::Log(copy.real),
                 (copy.dual * Qua::Conjugate(copy.real)) /** static_cast<T>(2.0)*/
             );
         }
 
         template<typename T>
-        GLB_INLINE constexpr dQuat<T> Exp(const dQuat<T>& dq) noexcept
+        GLB_INLINE constexpr glbDQuat_T<T> Exp(const glbDQuat_T<T>& dq) noexcept
         {
-            const vec<3, T> v(dq.real.x, dq.real.y, dq.real.z);
-            const vec<3, T> t(dq.dual.x, dq.dual.y, dq.dual.z);
+            const glbVec_T<3, T> v(dq.real.x, dq.real.y, dq.real.z);
+            const glbVec_T<3, T> t(dq.dual.x, dq.dual.y, dq.dual.z);
             const T theta = Vec::Length(v);
 
             if (theta < static_cast<T>(8.0e-05))
             {
-                return dQuat<T>(
-                    quat<T>(static_cast<T>(1), v),
-                    quat<T>(static_cast<T>(0), t)
+                return glbDQuat_T<T>(
+                    glbQuat_T<T>(static_cast<T>(1), v),
+                    glbQuat_T<T>(static_cast<T>(0), t)
                 );
             }
 
 
-            const quat<T> expReal = Qua::Exp(dq.real);
+            const glbQuat_T<T> expReal = Qua::Exp(dq.real);
 
-            return dQuat<T>(
+            return glbDQuat_T<T>(
                 expReal,
                 (dq.dual * expReal) /** static_cast<T>(0.5)*/
             );
@@ -65,12 +65,12 @@ namespace glb
 
 
         template<typename T>
-        GLB_INLINE constexpr dQuat<T> Pow(const dQuat<T>& dq, T exp) noexcept
+        GLB_INLINE constexpr glbDQuat_T<T> Pow(const glbDQuat_T<T>& dq, T exp) noexcept
         {            
             return DQua::Exp(exp * DQua::Log(dq));
         }
         template<typename T>
-        GLB_INLINE constexpr dQuat<T> Sqrt(const dQuat<T>& dq) noexcept
+        GLB_INLINE constexpr glbDQuat_T<T> Sqrt(const glbDQuat_T<T>& dq) noexcept
         {
             // n^s = e^(s * ln(n))
 

@@ -7,40 +7,40 @@ namespace glb
     namespace Vec
     {
         template<int S, typename T>
-        GLB_INLINE constexpr T Dot(const vec<S, T>& a, const vec<S, T>& b) noexcept;
+        GLB_INLINE constexpr T Dot(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept;
 
         template<int S, typename T>
-        GLB_INLINE constexpr T Length(const vec<S, T>& v) noexcept;
+        GLB_INLINE constexpr T Length(const glbVec_T<S, T>& v) noexcept;
 
         template<int S, typename T>
-        GLB_INLINE constexpr T LengthSquared(const vec<S, T>& v) noexcept;
+        GLB_INLINE constexpr T LengthSquared(const glbVec_T<S, T>& v) noexcept;
 
         template<int S, typename T>
-        GLB_INLINE constexpr T Distance(const vec<S, T>& a, const vec<S, T>& b) noexcept;
+        GLB_INLINE constexpr T Distance(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept;
 
         template<int S, typename T>
-        GLB_INLINE constexpr T DistanceSquared(const vec<S, T>& a, const vec<S, T>& b) noexcept;
+        GLB_INLINE constexpr T DistanceSquared(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept;
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Cross(const vec<S, T>& a, const vec<S, T>& b) noexcept;
+        GLB_INLINE constexpr glbVec_T<S, T> Cross(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept;
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Normalize(const vec<S, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<S, T> Normalize(const glbVec_T<S, T>& v) noexcept;
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> FaceForward(const vec<S, T>& N, const vec<S, T>& I, const vec<S, T>& Nref) noexcept;
+        GLB_INLINE constexpr glbVec_T<S, T> FaceForward(const glbVec_T<S, T>& N, const glbVec_T<S, T>& I, const glbVec_T<S, T>& Nref) noexcept;
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Reflect(const vec<S, T>& I, const vec<S, T>& N) noexcept;
+        GLB_INLINE constexpr glbVec_T<S, T> Reflect(const glbVec_T<S, T>& I, const glbVec_T<S, T>& N) noexcept;
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Refract(const vec<S, T>& I, const vec<S, T>& N, T eta) noexcept;
+        GLB_INLINE constexpr glbVec_T<S, T> Refract(const glbVec_T<S, T>& I, const glbVec_T<S, T>& N, T eta) noexcept;
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Project(const vec<S, T>& proj, const vec<S, T>& base) noexcept;
+        GLB_INLINE constexpr glbVec_T<S, T> Project(const glbVec_T<S, T>& proj, const glbVec_T<S, T>& base) noexcept;
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> ClampMagnitude(const vec<S, T>& v, T maxLength) noexcept;
+        GLB_INLINE constexpr glbVec_T<S, T> ClampMagnitude(const glbVec_T<S, T>& v, T maxLength) noexcept;
         
     } // namespace Vector
 }

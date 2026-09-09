@@ -5,7 +5,7 @@
 namespace glb
 {
     template<typename T>
-    struct GLB_ALIGN_(T) vec<3, T>
+    struct alignas(sizeof(T) * 4) glbVec_T<3, T>
     {
         union 
         {
@@ -15,11 +15,11 @@ namespace glb
             T values[3];
         };
 
-        GLB_INLINE explicit constexpr vec(T x, T y, T z = static_cast<T>(0.0)) noexcept;
-        GLB_INLINE explicit constexpr vec(T scalar = static_cast<T>(0.0)) noexcept; 
-        GLB_INLINE explicit constexpr vec(const vec<2, T>& xy, T vz = static_cast<T>(0.0)) noexcept;
-        GLB_INLINE constexpr vec(const vec<3, T>& v) noexcept;
-        GLB_INLINE explicit constexpr vec(const vec<4, T>& v) noexcept;
+        GLB_INLINE explicit constexpr glbVec_T(T x, T y, T z = static_cast<T>(0.0)) noexcept;
+        GLB_INLINE explicit constexpr glbVec_T(T scalar = static_cast<T>(0.0)) noexcept; 
+        GLB_INLINE explicit constexpr glbVec_T(const glbVec_T<2, T>& xy, T vz = static_cast<T>(0.0)) noexcept;
+        GLB_INLINE constexpr glbVec_T(const glbVec_T<3, T>& v) noexcept;
+        GLB_INLINE explicit constexpr glbVec_T(const glbVec_T<4, T>& v) noexcept;
 
 
         GLB_INLINE constexpr const T* data() const noexcept { return &x; };
@@ -28,42 +28,41 @@ namespace glb
         GLB_INLINE constexpr T& operator[](int index);
         GLB_INLINE constexpr const T& operator[](int index) const;
 
-        GLB_INLINE constexpr explicit operator vec<2, T>() const noexcept { return vec<2, T>(*this); };
-        GLB_INLINE constexpr explicit operator vec<4, T>() const noexcept { return vec<4, T>(*this); };
+        GLB_INLINE constexpr explicit operator glbVec_T<2, T>() const noexcept { return glbVec_T<2, T>(*this); };
+        GLB_INLINE constexpr explicit operator glbVec_T<4, T>() const noexcept { return glbVec_T<4, T>(*this); };
 
-        GLB_INLINE constexpr vec<3, T>& operator=(const vec<3, T>& v) noexcept = default;
-        GLB_INLINE constexpr vec<3, T>& operator=(T scalar) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator=(const glbVec_T<3, T>& v) noexcept = default;
 
 
-        GLB_INLINE constexpr vec<3, T>& operator+=(const vec<3, T>& v) noexcept;
-        GLB_INLINE constexpr vec<3, T>& operator+=(T scalar) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator+=(const glbVec_T<3, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator+=(T scalar) noexcept;
 
-        GLB_INLINE constexpr vec<3, T>& operator-=(const vec<3, T>& v) noexcept;
-        GLB_INLINE constexpr vec<3, T>& operator-=(T scalar) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator-=(const glbVec_T<3, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator-=(T scalar) noexcept;
 
-        GLB_INLINE constexpr vec<3, T>& operator*=(const vec<3, T>& v) noexcept;
-        GLB_INLINE constexpr vec<3, T>& operator*=(T scalar) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator*=(const glbVec_T<3, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator*=(T scalar) noexcept;
 
-        GLB_INLINE constexpr vec<3, T>& operator/=(const vec<3, T>& v) noexcept;
-        GLB_INLINE constexpr vec<3, T>& operator/=(T scalar) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator/=(const glbVec_T<3, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator/=(T scalar) noexcept;
 
-        GLB_INLINE constexpr vec<3, T>& operator%=(const vec<3, T>& v) noexcept;
-        GLB_INLINE constexpr vec<3, T>& operator%=(T scalar) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator%=(const glbVec_T<3, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator%=(T scalar) noexcept;
 
-        GLB_INLINE constexpr vec<3, T>& operator&=(const vec<3, T>& v) noexcept;
-        GLB_INLINE constexpr vec<3, T>& operator&=(T scalar) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator&=(const glbVec_T<3, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator&=(T scalar) noexcept;
 
-        GLB_INLINE constexpr vec<3, T>& operator|=(const vec<3, T>& v) noexcept;
-        GLB_INLINE constexpr vec<3, T>& operator|=(T scalar) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator|=(const glbVec_T<3, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator|=(T scalar) noexcept;
 
-        GLB_INLINE constexpr vec<3, T>& operator^=(const vec<3, T>& v) noexcept;
-        GLB_INLINE constexpr vec<3, T>& operator^=(T scalar) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator^=(const glbVec_T<3, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator^=(T scalar) noexcept;
 
-        GLB_INLINE constexpr vec<3, T>& operator<<=(const vec<3, T>& v) noexcept;
-        GLB_INLINE constexpr vec<3, T>& operator<<=(T scalar) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator<<=(const glbVec_T<3, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator<<=(T scalar) noexcept;
 
-        GLB_INLINE constexpr vec<3, T>& operator>>=(const vec<3, T>& v) noexcept;
-        GLB_INLINE constexpr vec<3, T>& operator>>=(T scalar) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator>>=(const glbVec_T<3, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T>& operator>>=(T scalar) noexcept;
     };   
 }
 

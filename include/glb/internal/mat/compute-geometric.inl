@@ -1,6 +1,6 @@
 namespace glb
 {
-    namespace glbInternal
+    namespace glbIntern
     {
         template<int R, int C, typename T, bool useSimd>
         struct matDeterminant {};
@@ -12,7 +12,7 @@ namespace glb
         template<typename T, bool useSimd>
         struct matDeterminant<2, 2, T, useSimd>
         {
-            GLB_INLINE static constexpr T call(const mat<2, 2, T>& m) noexcept
+            GLB_INLINE static constexpr T call(const glbMat_T<2, 2, T>& m) noexcept
             {
                 return m[0][0] * m[1][1] - m[0][1] * m[1][0];
             }
@@ -21,7 +21,7 @@ namespace glb
         template<typename T, bool useSimd>
         struct matDeterminant<3, 3, T, useSimd>
         {
-            GLB_INLINE static constexpr T call(const mat<3, 3, T>& m) noexcept
+            GLB_INLINE static constexpr T call(const glbMat_T<3, 3, T>& m) noexcept
             {
                 return m[0][0] * (m[1][1] * m[2][2] - m[1][2] * m[2][1]) -
                        m[1][0] * (m[0][1] * m[2][2] - m[0][2] * m[2][1]) +
@@ -32,7 +32,7 @@ namespace glb
         template<typename T, bool useSimd>
         struct matDeterminant<4, 4, T, useSimd>
         {
-            GLB_INLINE static constexpr T call(const mat<4, 4, T>& m) noexcept
+            GLB_INLINE static constexpr T call(const glbMat_T<4, 4, T>& m) noexcept
             {
                 
 
@@ -57,9 +57,9 @@ namespace glb
         template<typename T, bool useSimd>
         struct matTranspose<2, 2, T, useSimd>
         {
-            GLB_INLINE static constexpr mat<2, 2, T> call(const mat<2, 2, T>& m) noexcept
+            GLB_INLINE static constexpr glbMat_T<2, 2, T> call(const glbMat_T<2, 2, T>& m) noexcept
             {
-                return mat<2, 2, T>(
+                return glbMat_T<2, 2, T>(
                     m[0][0], m[0][1],
                     m[1][0], m[1][1]
                 );
@@ -69,9 +69,9 @@ namespace glb
         template<typename T, bool useSimd>
         struct matTranspose<3, 3, T, useSimd>
         {
-            GLB_INLINE static constexpr mat<3, 3, T> call(const mat<3, 3, T>& m) noexcept
+            GLB_INLINE static constexpr glbMat_T<3, 3, T> call(const glbMat_T<3, 3, T>& m) noexcept
             {
-                return mat<3, 3, T>(
+                return glbMat_T<3, 3, T>(
                     m[0][0], m[0][1], m[0][2],
                     m[1][0], m[1][1], m[1][2],
                     m[2][0], m[2][1], m[2][2]
@@ -82,9 +82,9 @@ namespace glb
         template<typename T, bool useSimd>
         struct matTranspose<4, 4, T, useSimd>
         {
-            GLB_INLINE static constexpr mat<4, 4, T> call(const mat<4, 4, T>& m) noexcept
+            GLB_INLINE static constexpr glbMat_T<4, 4, T> call(const glbMat_T<4, 4, T>& m) noexcept
             {
-                return mat<4, 4, T>(
+                return glbMat_T<4, 4, T>(
                     m[0][0], m[0][1], m[0][2], m[0][3],
                     m[1][0], m[1][1], m[1][2], m[1][3],
                     m[2][0], m[2][1], m[2][2], m[2][3],
@@ -93,28 +93,28 @@ namespace glb
             }
         };
         
-    } // namespace glbInternal
+    } // namespace glbIntern
     
     namespace Mat
     {
         template<int R, int C, typename T>
-        GLB_INLINE constexpr T Determinant(const mat<R, C, T>& m) noexcept
+        GLB_INLINE constexpr T Determinant(const glbMat_T<R, C, T>& m) noexcept
         {
-            return glbInternal::matDeterminant<R, C, T, glbInternal::useSimd<R, T>::value>::call(m);
+            return glbIntern::matDeterminant<R, C, T, glbIntern::useSimd<R, T>::value>::call(m);
         }
 
         template<int R, int C, typename T>
-        GLB_INLINE constexpr mat<C, R, T> Transpose(const mat<R, C, T>& m) noexcept
+        GLB_INLINE constexpr glbMat_T<C, R, T> Transpose(const glbMat_T<R, C, T>& m) noexcept
         {
-            return glbInternal::matTranspose<R, C, T, glbInternal::useSimd<R, T>::value>::call(m);
+            return glbIntern::matTranspose<R, C, T, glbIntern::useSimd<R, T>::value>::call(m);
         }
 
 
 
         template<typename T>
-        GLB_INLINE constexpr mat<3, 3, T> Cross(const vec<3, T>& v) noexcept
+        GLB_INLINE constexpr glbMat_T<3, 3, T> Cross(const glbVec_T<3, T>& v) noexcept
         {
-            mat<3, 3, T> res(static_cast<T>(0));
+            glbMat_T<3, 3, T> res(static_cast<T>(0));
 
             res[0][1] = v.z;
             res[1][0] = -v.z;
@@ -126,9 +126,9 @@ namespace glb
             return res;
         }
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Cross(const vec<3, T>& v) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Cross(const glbVec_T<3, T>& v) noexcept
         {
-            mat<4, 4, T> res(static_cast<T>(0));
+            glbMat_T<4, 4, T> res(static_cast<T>(0));
 
             res[0][1] = v.z;
             res[1][0] = -v.z;

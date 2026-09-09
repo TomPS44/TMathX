@@ -149,7 +149,6 @@
 
 
 
-
 #if defined(GLB_SIMD_AVX)
 #	include <immintrin.h>
 
@@ -171,15 +170,15 @@
 #endif
 
 
-
 #if !defined(GLB_SIMD_NONE)
-#if defined(GLB_COMPILER_MSVC) 
-#   define GLB_ALIGN_(type) __declspec(align(sizeof(type) * 4))
+#   if defined(GLB_COMPILER_MSVC) 
+#        define GLB_ALIGN_(type) __declspec(align(sizeof(type) * 4))
+    
+#   else
+#       define GLB_ALIGN_(type) __attribute__((aligned(sizeof(type) * 4)))
 
-#else
-#   define GLB_ALIGN_(type) __attribute__((aligned(sizeof(type) * 4)))
-#endif
-
+#   endif
+    
 #else
 #   define GLB_ALIGN_(type) 
 
@@ -209,6 +208,6 @@
  * 
  * Ex: Version 1.4.28 = 1004028
  */
-#define GLB_VERSION 1003003
+#define GLB_VERSION 1004002
 
 

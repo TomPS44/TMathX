@@ -3,11 +3,11 @@ namespace glb
     namespace Mat
     {
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Translate(const vec<3, T>& trsl) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Translate(const glbVec_T<3, T>& trsl) noexcept
         {
-            mat<4, 4, T> res;
+            glbMat_T<4, 4, T> res;
 
-            res[3] = vec<4, T>(trsl, static_cast<T>(1));
+            res[3] = glbVec_T<4, T>(trsl, static_cast<T>(1));
 
             return res;
         }

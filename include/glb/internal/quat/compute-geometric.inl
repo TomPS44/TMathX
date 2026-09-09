@@ -2,12 +2,12 @@
 
 namespace glb
 {
-    namespace glbInternal
+    namespace glbIntern
     {
         template<typename T, bool useSimd>
         struct quatDot
         {
-            GLB_INLINE static constexpr T call(const quat<T>& a, const quat<T>& b) noexcept
+            GLB_INLINE static constexpr T call(const glbQuat_T<T>& a, const glbQuat_T<T>& b) noexcept
             {
                 return a.w * b.w + a.x * b.x + a.y * b.y + a.z * b.z;
             }
@@ -17,9 +17,9 @@ namespace glb
         template<typename T, bool useSimd>
         struct quatLength
         {
-            GLB_INLINE static constexpr T call(const quat<T>& q) noexcept
+            GLB_INLINE static constexpr T call(const glbQuat_T<T>& q) noexcept
             {
-                return std::sqrt(glbInternal::quatDot<T, glbInternal::useSimd<4, T>::value>::call(q, q));
+                return std::sqrt(glbIntern::quatDot<T, glbIntern::useSimd<4, T>::value>::call(q, q));
             }
         };
 
@@ -27,9 +27,9 @@ namespace glb
         template<typename T, bool useSimd>
         struct quatNormalize
         {
-            GLB_INLINE static constexpr quat<T> call(const quat<T>& q) noexcept
+            GLB_INLINE static constexpr glbQuat_T<T> call(const glbQuat_T<T>& q) noexcept
             {
-                return q / std::sqrt(glbInternal::quatDot<T, glbInternal::useSimd<4, T>::value>::call(q, q));
+                return q / std::sqrt(glbIntern::quatDot<T, glbIntern::useSimd<4, T>::value>::call(q, q));
             }
         };
 
@@ -37,47 +37,47 @@ namespace glb
         template<typename T, bool useSimd>
         struct quatInverse
         {
-            GLB_INLINE static constexpr quat<T> call(const quat<T>& q) noexcept
+            GLB_INLINE static constexpr glbQuat_T<T> call(const glbQuat_T<T>& q) noexcept
             {
                 // Conjugué x inverse de la longueur au carré 
 
-                return Qua::Conjugate(q) * (1 / glbInternal::quatDot<T, glbInternal::useSimd<4, T>::value>::call(q, q));
+                return Qua::Conjugate(q) * (1 / glbIntern::quatDot<T, glbIntern::useSimd<4, T>::value>::call(q, q));
             }
         };
 
         
         
-    } // namespace glbInternal
+    } // namespace glbIntern
     
     namespace Qua
     {
         template<typename T>
-        GLB_INLINE constexpr T Dot(const quat<T>& a, const quat<T>& b) noexcept
+        GLB_INLINE constexpr T Dot(const glbQuat_T<T>& a, const glbQuat_T<T>& b) noexcept
         {
-            return glbInternal::quatDot<T, glbInternal::useSimd<4, T>::value>::call(a, b);
+            return glbIntern::quatDot<T, glbIntern::useSimd<4, T>::value>::call(a, b);
         }
 
         template<typename T>
-        GLB_INLINE constexpr T Length(const quat<T>& q) noexcept
+        GLB_INLINE constexpr T Length(const glbQuat_T<T>& q) noexcept
         {
-            return glbInternal::quatLength<T, glbInternal::useSimd<4, T>::value>::call(q);
+            return glbIntern::quatLength<T, glbIntern::useSimd<4, T>::value>::call(q);
         }
         template<typename T>
-        GLB_INLINE constexpr T LengthSquared(const quat<T>& q) noexcept
+        GLB_INLINE constexpr T LengthSquared(const glbQuat_T<T>& q) noexcept
         {
-            return glbInternal::quatDot<T, glbInternal::useSimd<4, T>::value>::call(q, q);
-        }
-
-        template<typename T>
-        GLB_INLINE constexpr quat<T> Normalize(const quat<T>& q) noexcept
-        {
-            return glbInternal::quatNormalize<T, glbInternal::useSimd<4, T>::value>::call(q);
+            return glbIntern::quatDot<T, glbIntern::useSimd<4, T>::value>::call(q, q);
         }
 
         template<typename T>
-        GLB_INLINE constexpr quat<T> Conjugate(const quat<T>& q) noexcept
+        GLB_INLINE constexpr glbQuat_T<T> Normalize(const glbQuat_T<T>& q) noexcept
         {
-            return quat<T>(
+            return glbIntern::quatNormalize<T, glbIntern::useSimd<4, T>::value>::call(q);
+        }
+
+        template<typename T>
+        GLB_INLINE constexpr glbQuat_T<T> Conjugate(const glbQuat_T<T>& q) noexcept
+        {
+            return glbQuat_T<T>(
                 q.w, 
                 q.x * static_cast<T>(-1),
                 q.y * static_cast<T>(-1),
@@ -86,9 +86,9 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr quat<T> Inverse(const quat<T>& q) noexcept
+        GLB_INLINE constexpr glbQuat_T<T> Inverse(const glbQuat_T<T>& q) noexcept
         {
-            return glbInternal::quatInverse<T, glbInternal::useSimd<4, T>::value>::call(q);
+            return glbIntern::quatInverse<T, glbIntern::useSimd<4, T>::value>::call(q);
         }
 
     } // namespace Vec

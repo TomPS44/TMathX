@@ -11,68 +11,66 @@ namespace glb
      * To create an alias, use :
      * 
      * ```cpp
-     * typedef vec<%SIZE%, %TYPE%> %NAME%;
-     * or
-     * using %NAME% = vec<%SIZE%, %TYPE%>;
+     * using NAME = glbVec_T<SIZE, TYPE>;
      * 
      * 
      * Ex: 
-     * using Vec8c = vec<8, char>;
+     * using Vec8c = glbVec_T<8, char>;
      * ```
      */
-    template<int S, typename T> struct vec;
+    template<int S, typename T> struct glbVec_T;
     /**
      * @brief A matrix of size `R x C` storing values of type `T`.
      * 
      * To create an alias, use :
      * 
      * ```cpp
-     * typedef mat<%ROWS%, %COLS%, %TYPE> %NAME%;
+     * typedef glbMat_T<%ROWS%, %COLS%, %TYPE> %NAME%;
      * or
-     * using %NAME% = mat<%ROWS%, %COLS%, %TYPE>;
+     * using %NAME% = glbMat_T<%ROWS%, %COLS%, %TYPE>;
      * 
      * 
      * Ex: 
-     * using Mat6x8b = mat<6, 8, bool>;
+     * using Mat6x8b = glbMat_T<6, 8, bool>;
      * ```
      */
-    template<int R, int C, typename T> struct mat;
+    template<int R, int C, typename T> struct glbMat_T;
     /**
      * @brief A Quaternion storing values of type `T`.
      * 
      * To create an alias, use :
      * 
      * ```cpp
-     * typedef quat<%TYPE%> %NAME%;
+     * typedef glbQuat_T<%TYPE%> %NAME%;
      * or
-     * using %NAME% = quat<%TYPE%>;
+     * using %NAME% = glbQuat_T<%TYPE%>;
      * 
      * 
      * Ex: 
-     * using QuatHighHighP = quat<long double>;
+     * using QuatHighHighP = glbQuat_T<long double>;
      * ```
      */
-    template<typename T> struct quat;
+    template<typename T> struct glbQuat_T;
     /**
      * @brief A Dual Quaternion of size `S` storing values of type `T`.
      * 
      * To create an alias, use :
      * 
      * ```cpp
-     * typedef dQuat<%TYPE%> %NAME%;
+     * typedef glbDQuat_T<%TYPE%> %NAME%;
      * or
-     * using %NAME% = dQuat<%TYPE%>;
+     * using %NAME% = glbDQuat_T<%TYPE%>;
      * 
      * 
      * Ex: 
-     * using DQuatf32 = dQuat<float>;
+     * using DQuatf32 = glbDQuat_T<float>;
      * ```
      */
-    template<typename T> struct dQuat;
+    template<typename T> struct glbDQuat_T;
 
 
     
-    namespace glbInternal
+    namespace glbIntern
     {
         
         template<int S, typename T>
@@ -145,5 +143,5 @@ namespace glb
 
         
 
-    } // namespace glbInternal
+    } // namespace glbIntern
 } // namespace glb

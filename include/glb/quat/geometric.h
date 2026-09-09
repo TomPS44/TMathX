@@ -7,21 +7,21 @@ namespace glb
     namespace Qua
     {
         template<typename T>
-        GLB_INLINE constexpr T Dot(const quat<T>& a, const quat<T>& b) noexcept;
+        GLB_INLINE constexpr T Dot(const glbQuat_T<T>& a, const glbQuat_T<T>& b) noexcept;
 
         template<typename T>
-        GLB_INLINE constexpr T Length(const quat<T>& q) noexcept;
+        GLB_INLINE constexpr T Length(const glbQuat_T<T>& q) noexcept;
         template<typename T>
-        GLB_INLINE constexpr T LengthSquared(const quat<T>& q) noexcept;
+        GLB_INLINE constexpr T LengthSquared(const glbQuat_T<T>& q) noexcept;
 
         template<typename T>
-        GLB_INLINE constexpr quat<T> Normalize(const quat<T>& q) noexcept;
+        GLB_INLINE constexpr glbQuat_T<T> Normalize(const glbQuat_T<T>& q) noexcept;
 
         template<typename T>
-        GLB_INLINE constexpr quat<T> Conjugate(const quat<T>& q) noexcept;
+        GLB_INLINE constexpr glbQuat_T<T> Conjugate(const glbQuat_T<T>& q) noexcept;
         
         template<typename T>
-        GLB_INLINE constexpr quat<T> Inverse(const quat<T>& q) noexcept;
+        GLB_INLINE constexpr glbQuat_T<T> Inverse(const glbQuat_T<T>& q) noexcept;
 
     } // namespace Qua
 

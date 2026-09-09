@@ -18,14 +18,6 @@ namespace glb
         /// @param start The starting value of the interpolation
         /// @param end The starting value of the interpolation
         /// @param val The value between `start` and `end`, giving the time t
-        /// ```cpp
-        /// #include "glb/math/interpolation"
-        ///
-        /// int main()
-        /// {
-        ///     std::cout << Math::invLerp(0.0f, 10.0f, 2.5f) // 0.25f
-        /// }
-        /// ```
         template<typename T>
         GLB_INLINE constexpr T InvLerp(T start, T end, T val) noexcept;
 

@@ -7,14 +7,14 @@ namespace glb
     // --- Unary operators ---
 
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator+(const vec<S, T>& v) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator+(const glbVec_T<S, T>& v) noexcept
     {
         return v;
     }
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator-(const vec<S, T>& v) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator-(const glbVec_T<S, T>& v) noexcept
     {
-        return glbInternal::vecNeg<S, T, glbInternal::useSimd<S, T>::value>::call(v);
+        return glbIntern::vecNeg<S, T, glbIntern::useSimd<S, T>::value>::call(v);
     }
 
 
@@ -22,82 +22,82 @@ namespace glb
     // --- Arithmetic (binary) operators
 
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator+(const vec<S, T>& a, const vec<S, T>& b) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator+(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
     {
-        return glbInternal::vecAdd<S, T, glbInternal::useSimd<S, T>::value>::call(a, b);
+        return glbIntern::vecAdd<S, T, glbIntern::useSimd<S, T>::value>::call(a, b);
     }
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator+(const vec<S, T>& v, T scalar) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator+(const glbVec_T<S, T>& v, T scalar) noexcept
     {
-        return glbInternal::vecAdd<S, T, glbInternal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
+        return glbIntern::vecAdd<S, T, glbIntern::useSimd<S, T>::value>::call(v, glbVec_T<S, T>(scalar));
     }
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator+(T scalar, const vec<S, T>& v) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator+(T scalar, const glbVec_T<S, T>& v) noexcept
     {
-        return glbInternal::vecAdd<S, T, glbInternal::useSimd<S, T>::value>::call(vec<S, T>(scalar), v);
-    }
-
-
-    template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator-(const vec<S, T>& a, const vec<S, T>& b) noexcept
-    {
-        return glbInternal::vecSub<S, T, glbInternal::useSimd<S, T>::value>::call(a, b);
-    }
-    template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator-(const vec<S, T>& v, T scalar) noexcept
-    {
-        return glbInternal::vecSub<S, T, glbInternal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
-    }
-    template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator-(T scalar, const vec<S, T>& v) noexcept
-    {
-        return glbInternal::vecSub<S, T, glbInternal::useSimd<S, T>::value>::call(vec<S, T>(scalar), v);
+        return glbIntern::vecAdd<S, T, glbIntern::useSimd<S, T>::value>::call(glbVec_T<S, T>(scalar), v);
     }
 
 
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator*(const vec<S, T>& a, const vec<S, T>& b) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator-(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
     {
-        return glbInternal::vecMul<S, T, glbInternal::useSimd<S, T>::value>::call(a, b);
+        return glbIntern::vecSub<S, T, glbIntern::useSimd<S, T>::value>::call(a, b);
     }
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator*(const vec<S, T>& v, T scalar) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator-(const glbVec_T<S, T>& v, T scalar) noexcept
     {
-        return glbInternal::vecMul<S, T, glbInternal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
+        return glbIntern::vecSub<S, T, glbIntern::useSimd<S, T>::value>::call(v, glbVec_T<S, T>(scalar));
     }
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator*(T scalar, const vec<S, T>& v) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator-(T scalar, const glbVec_T<S, T>& v) noexcept
     {
-        return glbInternal::vecMul<S, T, glbInternal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
-    }
-
-
-    template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator/(const vec<S, T>& a, const vec<S, T>& b) noexcept
-    {
-        return glbInternal::vecDiv<S, T, glbInternal::useSimd<S, T>::value>::call(a, b);
-    }
-    template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator/(const vec<S, T>& v, T scalar) noexcept
-    {
-        return glbInternal::vecDiv<S, T, glbInternal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
-    }
-    template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator/(T scalar, const vec<S, T>& v) noexcept
-    {
-        return glbInternal::vecDiv<S, T, glbInternal::useSimd<S, T>::value>::call(vec<S, T>(scalar), v);
+        return glbIntern::vecSub<S, T, glbIntern::useSimd<S, T>::value>::call(glbVec_T<S, T>(scalar), v);
     }
 
 
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator%(const vec<S, T>& a, const vec<S, T>& b) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator*(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
     {
-        return glbInternal::vecMod<S, T, glbInternal::useSimd<S, T>::value>::call(a, b);
+        return glbIntern::vecMul<S, T, glbIntern::useSimd<S, T>::value>::call(a, b);
     }
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator%(const vec<S, T>& v, T scalar) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator*(const glbVec_T<S, T>& v, T scalar) noexcept
     {
-        return glbInternal::vecMod<S, T, glbInternal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
+        return glbIntern::vecMul<S, T, glbIntern::useSimd<S, T>::value>::call(v, glbVec_T<S, T>(scalar));
+    }
+    template<int S, typename T>
+    GLB_INLINE constexpr glbVec_T<S, T> operator*(T scalar, const glbVec_T<S, T>& v) noexcept
+    {
+        return glbIntern::vecMul<S, T, glbIntern::useSimd<S, T>::value>::call(v, glbVec_T<S, T>(scalar));
+    }
+
+
+    template<int S, typename T>
+    GLB_INLINE constexpr glbVec_T<S, T> operator/(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
+    {
+        return glbIntern::vecDiv<S, T, glbIntern::useSimd<S, T>::value>::call(a, b);
+    }
+    template<int S, typename T>
+    GLB_INLINE constexpr glbVec_T<S, T> operator/(const glbVec_T<S, T>& v, T scalar) noexcept
+    {
+        return glbIntern::vecDiv<S, T, glbIntern::useSimd<S, T>::value>::call(v, glbVec_T<S, T>(scalar));
+    }
+    template<int S, typename T>
+    GLB_INLINE constexpr glbVec_T<S, T> operator/(T scalar, const glbVec_T<S, T>& v) noexcept
+    {
+        return glbIntern::vecDiv<S, T, glbIntern::useSimd<S, T>::value>::call(glbVec_T<S, T>(scalar), v);
+    }
+
+
+    template<int S, typename T>
+    GLB_INLINE constexpr glbVec_T<S, T> operator%(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
+    {
+        return glbIntern::vecMod<S, T, glbIntern::useSimd<S, T>::value>::call(a, b);
+    }
+    template<int S, typename T>
+    GLB_INLINE constexpr glbVec_T<S, T> operator%(const glbVec_T<S, T>& v, T scalar) noexcept
+    {
+        return glbIntern::vecMod<S, T, glbIntern::useSimd<S, T>::value>::call(v, glbVec_T<S, T>(scalar));
     }
 
 
@@ -106,118 +106,118 @@ namespace glb
     // --- Bitwise operators
 
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator&(const vec<S, T>& a, const vec<S, T>& b) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator&(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
     {
-        return glbInternal::vecAnd<S, T, glbInternal::useSimd<S, T>::value>::call(a, b);
+        return glbIntern::vecAnd<S, T, glbIntern::useSimd<S, T>::value>::call(a, b);
     }
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator&(const vec<S, T>& v, T scalar) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator&(const glbVec_T<S, T>& v, T scalar) noexcept
     {
-        return glbInternal::vecAnd<S, T, glbInternal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
+        return glbIntern::vecAnd<S, T, glbIntern::useSimd<S, T>::value>::call(v, glbVec_T<S, T>(scalar));
     }
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator&(T scalar, const vec<S, T>& v) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator&(T scalar, const glbVec_T<S, T>& v) noexcept
     {
-        return glbInternal::vecAnd<S, T, glbInternal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
-    }
-
-    template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator|(const vec<S, T>& a, const vec<S, T>& b) noexcept
-    {
-        return glbInternal::vecOr<S, T, glbInternal::useSimd<S, T>::value>::call(a, b);
-    }
-    template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator|(const vec<S, T>& v, T scalar) noexcept
-    {
-        return glbInternal::vecOr<S, T, glbInternal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
-    }
-    template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator|(T scalar, const vec<S, T>& v) noexcept
-    {
-        return glbInternal::vecOr<S, T, glbInternal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
+        return glbIntern::vecAnd<S, T, glbIntern::useSimd<S, T>::value>::call(v, glbVec_T<S, T>(scalar));
     }
 
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator^(const vec<S, T>& a, const vec<S, T>& b) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator|(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
     {
-        return glbInternal::vecXor<S, T, glbInternal::useSimd<S, T>::value>::call(a, b);
+        return glbIntern::vecOr<S, T, glbIntern::useSimd<S, T>::value>::call(a, b);
     }
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator^(const vec<S, T>& v, T scalar) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator|(const glbVec_T<S, T>& v, T scalar) noexcept
     {
-        return glbInternal::vecXor<S, T, glbInternal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
+        return glbIntern::vecOr<S, T, glbIntern::useSimd<S, T>::value>::call(v, glbVec_T<S, T>(scalar));
     }
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator^(T scalar, const vec<S, T>& v) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator|(T scalar, const glbVec_T<S, T>& v) noexcept
     {
-        return glbInternal::vecXor<S, T, glbInternal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
-    }
-
-    template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator<<(const vec<S, T>& a, const vec<S, T>& b) noexcept
-    {
-        return glbInternal::vecShiftLeft<S, T, glbInternal::useSimd<S, T>::value>::call(a, b);
-    }
-    template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator<<(const vec<S, T>& v, T scalar) noexcept
-    {
-        return glbInternal::vecShiftLeft<S, T, glbInternal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
-    }
-    template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator<<(T scalar, const vec<S, T>& v) noexcept
-    {
-        return glbInternal::vecShiftLeft<S, T, glbInternal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
+        return glbIntern::vecOr<S, T, glbIntern::useSimd<S, T>::value>::call(v, glbVec_T<S, T>(scalar));
     }
 
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator>>(const vec<S, T>& a, const vec<S, T>& b) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator^(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
     {
-        return glbInternal::vecShiftRight<S, T, glbInternal::useSimd<S, T>::value>::call(a, b);
+        return glbIntern::vecXor<S, T, glbIntern::useSimd<S, T>::value>::call(a, b);
     }
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator>>(const vec<S, T>& v, T scalar) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator^(const glbVec_T<S, T>& v, T scalar) noexcept
     {
-        return glbInternal::vecShiftRight<S, T, glbInternal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
+        return glbIntern::vecXor<S, T, glbIntern::useSimd<S, T>::value>::call(v, glbVec_T<S, T>(scalar));
     }
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator>>(T scalar, const vec<S, T>& v) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator^(T scalar, const glbVec_T<S, T>& v) noexcept
     {
-        return glbInternal::vecShiftRight<S, T, glbInternal::useSimd<S, T>::value>::call(v, vec<S, T>(scalar));
+        return glbIntern::vecXor<S, T, glbIntern::useSimd<S, T>::value>::call(v, glbVec_T<S, T>(scalar));
+    }
+
+    template<int S, typename T>
+    GLB_INLINE constexpr glbVec_T<S, T> operator<<(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
+    {
+        return glbIntern::vecShiftLeft<S, T, glbIntern::useSimd<S, T>::value>::call(a, b);
+    }
+    template<int S, typename T>
+    GLB_INLINE constexpr glbVec_T<S, T> operator<<(const glbVec_T<S, T>& v, T scalar) noexcept
+    {
+        return glbIntern::vecShiftLeft<S, T, glbIntern::useSimd<S, T>::value>::call(v, glbVec_T<S, T>(scalar));
+    }
+    template<int S, typename T>
+    GLB_INLINE constexpr glbVec_T<S, T> operator<<(T scalar, const glbVec_T<S, T>& v) noexcept
+    {
+        return glbIntern::vecShiftLeft<S, T, glbIntern::useSimd<S, T>::value>::call(v, glbVec_T<S, T>(scalar));
+    }
+
+    template<int S, typename T>
+    GLB_INLINE constexpr glbVec_T<S, T> operator>>(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
+    {
+        return glbIntern::vecShiftRight<S, T, glbIntern::useSimd<S, T>::value>::call(a, b);
+    }
+    template<int S, typename T>
+    GLB_INLINE constexpr glbVec_T<S, T> operator>>(const glbVec_T<S, T>& v, T scalar) noexcept
+    {
+        return glbIntern::vecShiftRight<S, T, glbIntern::useSimd<S, T>::value>::call(v, glbVec_T<S, T>(scalar));
+    }
+    template<int S, typename T>
+    GLB_INLINE constexpr glbVec_T<S, T> operator>>(T scalar, const glbVec_T<S, T>& v) noexcept
+    {
+        return glbIntern::vecShiftRight<S, T, glbIntern::useSimd<S, T>::value>::call(v, glbVec_T<S, T>(scalar));
     }
 
 
 
 
     template<int S, typename T>
-    GLB_INLINE constexpr bool operator==(const vec<S, T>& a, const vec<S, T>& b) noexcept
+    GLB_INLINE constexpr bool operator==(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
     {
-        return glbInternal::vecEqual<S, T, std::numeric_limits<T>::is_iec559>::call(a, b);
+        return glbIntern::vecEqual<S, T, std::numeric_limits<T>::is_iec559>::call(a, b);
     }
     template<int S, typename T>
-    GLB_INLINE constexpr bool operator!=(const vec<S, T>& a, const vec<S, T>& b) noexcept
+    GLB_INLINE constexpr bool operator!=(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
     {
         return !(a == b);
     }
 
     template<int S, typename T>
-    GLB_INLINE constexpr bool operator<(const vec<S, T>& a, const vec<S, T>& b) noexcept
+    GLB_INLINE constexpr bool operator<(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
     {
-        return glbInternal::vecLess<S, T, std::numeric_limits<T>::is_iec559>::call(a, b);
+        return glbIntern::vecLess<S, T, std::numeric_limits<T>::is_iec559>::call(a, b);
     }
     template<int S, typename T>
-    GLB_INLINE constexpr bool operator<=(const vec<S, T>& a, const vec<S, T>& b) noexcept
+    GLB_INLINE constexpr bool operator<=(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
     {
-        return glbInternal::vecLessOrEqual<S, T, std::numeric_limits<T>::is_iec559>::call(a, b);
+        return glbIntern::vecLessOrEqual<S, T, std::numeric_limits<T>::is_iec559>::call(a, b);
     }
     template<int S, typename T>
-    GLB_INLINE constexpr bool operator>(const vec<S, T>& a, const vec<S, T>& b) noexcept
+    GLB_INLINE constexpr bool operator>(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
     {
-        return glbInternal::vecGreater<S, T, std::numeric_limits<T>::is_iec559>::call(a, b);
+        return glbIntern::vecGreater<S, T, std::numeric_limits<T>::is_iec559>::call(a, b);
     }
     template<int S, typename T>
-    GLB_INLINE constexpr bool operator>=(const vec<S, T>& a, const vec<S, T>& b) noexcept
+    GLB_INLINE constexpr bool operator>=(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
     {
-        return glbInternal::vecGreaterOrEqual<S, T, std::numeric_limits<T>::is_iec559>::call(a, b);
+        return glbIntern::vecGreaterOrEqual<S, T, std::numeric_limits<T>::is_iec559>::call(a, b);
     }
 
 
@@ -226,8 +226,8 @@ namespace glb
     // --- Unary Bitwise operators
 
     template<int S, typename T>
-    GLB_INLINE constexpr vec<S, T> operator~(const vec<S, T>& v) noexcept
+    GLB_INLINE constexpr glbVec_T<S, T> operator~(const glbVec_T<S, T>& v) noexcept
     {
-        return glbInternal::vecNot<S, T, glbInternal::useSimd<S, T>::value>::call(v);
+        return glbIntern::vecNot<S, T, glbIntern::useSimd<S, T>::value>::call(v);
     }
 }

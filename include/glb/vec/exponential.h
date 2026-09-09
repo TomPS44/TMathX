@@ -7,26 +7,26 @@ namespace glb
     namespace Vec
     {
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Pow(const vec<S, T>& v, const vec<S, T>& exponent) noexcept;
+        GLB_INLINE constexpr glbVec_T<S, T> Pow(const glbVec_T<S, T>& v, const glbVec_T<S, T>& exponent) noexcept;
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Pow(const vec<S, T>& v, T exponent) noexcept;
+        GLB_INLINE constexpr glbVec_T<S, T> Pow(const glbVec_T<S, T>& v, T exponent) noexcept;
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Sqrt(const vec<S, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<S, T> Sqrt(const glbVec_T<S, T>& v) noexcept;
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> InvSqrt(const vec<S, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<S, T> InvSqrt(const glbVec_T<S, T>& v) noexcept;
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Exp(const vec<S, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<S, T> Exp(const glbVec_T<S, T>& v) noexcept;
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Exp2(const vec<S, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<S, T> Exp2(const glbVec_T<S, T>& v) noexcept;
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Log(const vec<S, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<S, T> Log(const glbVec_T<S, T>& v) noexcept;
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Log2(const vec<S, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<S, T> Log2(const glbVec_T<S, T>& v) noexcept;
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Log10(const vec<S, T>& v) noexcept;
+        GLB_INLINE constexpr glbVec_T<S, T> Log10(const glbVec_T<S, T>& v) noexcept;
     }
 }
 

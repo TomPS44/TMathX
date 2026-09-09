@@ -19,20 +19,20 @@ namespace glb
     namespace DQua
     {
         template<typename T>
-        GLB_INLINE constexpr dQuat<T> Normalize(const dQuat<T>& dq) noexcept;
+        GLB_INLINE constexpr glbDQuat_T<T> Normalize(const glbDQuat_T<T>& dq) noexcept;
 
         template<typename T>
-        GLB_INLINE constexpr dQuat<T> Conjugate(const dQuat<T>& dq) noexcept;
+        GLB_INLINE constexpr glbDQuat_T<T> Conjugate(const glbDQuat_T<T>& dq) noexcept;
 
         template<typename T>
-        GLB_INLINE constexpr dQuat<T> Inverse(const dQuat<T>& dq) noexcept;
+        GLB_INLINE constexpr glbDQuat_T<T> Inverse(const glbDQuat_T<T>& dq) noexcept;
 
 
         template<typename T>
-        GLB_INLINE constexpr quat<T> GetRotation(const dQuat<T>& dq) noexcept;
+        GLB_INLINE constexpr glbQuat_T<T> GetRotation(const glbDQuat_T<T>& dq) noexcept;
 
         template<typename T>
-        GLB_INLINE constexpr vec<3, T> GetTranslation(const dQuat<T>& dq) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T> GetTranslation(const glbDQuat_T<T>& dq) noexcept;
 
     } // namespace DQua
 } // namespace glb

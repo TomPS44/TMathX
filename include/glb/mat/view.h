@@ -15,7 +15,7 @@ namespace glb
          * @param worldUp The normalized vector representing the direction of the up axis in world space
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> LookAt_LH(const vec<3, T>& eye, const vec<3, T>& target, const vec<3, T>& worldUp) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> LookAt_LH(const glbVec_T<3, T>& eye, const glbVec_T<3, T>& target, const glbVec_T<3, T>& worldUp) noexcept;
 
         /**
          * Generates a `right-handed` view matrix 
@@ -25,7 +25,7 @@ namespace glb
          * @param worldUp The normalized vector representing the direction of the up axis in world space
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> LookAt_RH(const vec<3, T>& eye, const vec<3, T>& target, const vec<3, T>& worldUp) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> LookAt_RH(const glbVec_T<3, T>& eye, const glbVec_T<3, T>& target, const glbVec_T<3, T>& worldUp) noexcept;
         
     } // namespace glbDetail
 
@@ -40,7 +40,7 @@ namespace glb
          * The coordinate system used to generate the matrix is the one specified by GLB_SET_COORDINATE_SYSTEM_...
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> LookAt(const vec<3, T>& eye, const vec<3, T>& target, const vec<3, T>& worldUp) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> LookAt(const glbVec_T<3, T>& eye, const glbVec_T<3, T>& target, const glbVec_T<3, T>& worldUp) noexcept;
 
     } // namespace Mat
     

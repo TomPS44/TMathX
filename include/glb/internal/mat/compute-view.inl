@@ -1,17 +1,17 @@
-#include "glb/vec/geometric.h"
+#include "../../vec/geometric.h"
 
 namespace glb
 {
     namespace glbDetail
     {
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> LookAt_LH(const vec<3, T>& eye, const vec<3, T>& target, const vec<3, T>& worldUp) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> LookAt_LH(const glbVec_T<3, T>& eye, const glbVec_T<3, T>& target, const glbVec_T<3, T>& worldUp) noexcept
         {
-            const vec<3, T>& forward = Vec::Normalize(target - eye);
-            const vec<3, T>& right = Vec::Normalize(Vec::Cross(worldUp, forward));
-            const vec<3, T>& up = Vec::Normalize(Vec::Cross(forward, right));
+            const glbVec_T<3, T>& forward = Vec::Normalize(target - eye);
+            const glbVec_T<3, T>& right = Vec::Normalize(Vec::Cross(worldUp, forward));
+            const glbVec_T<3, T>& up = Vec::Normalize(Vec::Cross(forward, right));
 
-            mat<4, 4, T> res;
+            glbMat_T<4, 4, T> res;
 
             res[0][0] = right.x;
             res[1][0] = right.y;
@@ -32,13 +32,13 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> LookAt_RH(const vec<3, T>& eye, const vec<3, T>& target, const vec<3, T>& worldUp) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> LookAt_RH(const glbVec_T<3, T>& eye, const glbVec_T<3, T>& target, const glbVec_T<3, T>& worldUp) noexcept
         {
-            const vec<3, T>& forward = Vec::Normalize(eye - target);
-            const vec<3, T>& right = Vec::Normalize(Vec::Cross(worldUp, forward));
-            const vec<3, T>& up = Vec::Normalize(Vec::Cross(forward, right));
+            const glbVec_T<3, T>& forward = Vec::Normalize(eye - target);
+            const glbVec_T<3, T>& right = Vec::Normalize(Vec::Cross(worldUp, forward));
+            const glbVec_T<3, T>& up = Vec::Normalize(Vec::Cross(forward, right));
 
-            mat<4, 4, T> res;
+            glbMat_T<4, 4, T> res;
 
             res[0][0] = right.x;
             res[1][0] = right.y;
@@ -63,7 +63,7 @@ namespace glb
     namespace Mat
     {
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> LookAt(const vec<3, T>& eye, const vec<3, T>& target, const vec<3, T>& worldUp) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> LookAt(const glbVec_T<3, T>& eye, const glbVec_T<3, T>& target, const glbVec_T<3, T>& worldUp) noexcept
         {
 #           if defined(GLB_SET_COORDINATE_SYSTEM_LH)
                 return glbDetail::LookAt_LH(eye, target, worldUp);

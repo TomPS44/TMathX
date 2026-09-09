@@ -4,7 +4,7 @@
 
 namespace glb
 {
-    namespace glbInternal
+    namespace glbIntern
     {
 
 #       if defined(GLB_SIMD_SSE)
@@ -12,9 +12,9 @@ namespace glb
         template<>
         struct matTranspose<4, 4, float, true>
         {
-            GLB_INLINE static mat<4, 4, float> call(const mat<4, 4, float>& m) noexcept
+            GLB_INLINE static glbMat_T<4, 4, float> call(const glbMat_T<4, 4, float>& m) noexcept
             {
-                mat<4, 4, float> res = m;
+                glbMat_T<4, 4, float> res = m;
 
 				_MM_TRANSPOSE4_PS(res[0].reg, res[1].reg, res[2].reg, res[3].reg);
 
@@ -25,7 +25,7 @@ namespace glb
         template<>
         struct matDeterminant<4, 4, float, true>
         {
-            GLB_INLINE static float call(const mat<4, 4, float>& m) noexcept
+            GLB_INLINE static float call(const glbMat_T<4, 4, float>& m) noexcept
             {
 				// source : https://github.com/icaven/glm/blob/master/glm/simd/matrix.h
 
@@ -56,7 +56,7 @@ namespace glb
 	            const __m128 mulC = _mm_mul_ps(swap2C, swap3C);
 	            const __m128 subF = _mm_sub_ps(_mm_movehl_ps(mulC, mulC), mulC);
 
-	            //vec<4, T, Q> DetCof(
+	            //glbVec_T<4, T, Q> DetCof(
 	            //	+ (m[1][1] * SubFactor00 - m[1][2] * SubFactor01 + m[1][3] * SubFactor02),
 	            //	- (m[1][0] * SubFactor00 - m[1][2] * SubFactor03 + m[1][3] * SubFactor04),
 	            //	+ (m[1][0] * SubFactor01 - m[1][1] * SubFactor03 + m[1][3] * SubFactor05),
@@ -86,7 +86,7 @@ namespace glb
 	            //	 + m[0][2] * DetCof[2]
 	            //	 + m[0][3] * DetCof[3];
 
-	            return _mm_cvtss_f32(glbInternal::vecDot__m128(m[0].reg, detCof));
+	            return _mm_cvtss_f32(glbIntern::vecDot__m128(m[0].reg, detCof));
             }
         };
 

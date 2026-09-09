@@ -21,15 +21,15 @@ namespace glb
     namespace DQua
     {
         template<typename T>
-        GLB_INLINE constexpr dQuat<T> Exp(const dQuat<T>& q) noexcept;
+        GLB_INLINE constexpr glbDQuat_T<T> Exp(const glbDQuat_T<T>& q) noexcept;
         
         template<typename T>
-        GLB_INLINE constexpr dQuat<T> Log(const dQuat<T>& q) noexcept;
+        GLB_INLINE constexpr glbDQuat_T<T> Log(const glbDQuat_T<T>& q) noexcept;
 
         template<typename T>
-        GLB_INLINE constexpr dQuat<T> Pow(const dQuat<T>& q, T exponent) noexcept;
+        GLB_INLINE constexpr glbDQuat_T<T> Pow(const glbDQuat_T<T>& q, T exponent) noexcept;
         template<typename T>
-        GLB_INLINE constexpr dQuat<T> Sqrt(const dQuat<T>& q) noexcept;
+        GLB_INLINE constexpr glbDQuat_T<T> Sqrt(const glbDQuat_T<T>& q) noexcept;
 
     } // namespace Quaternion
     

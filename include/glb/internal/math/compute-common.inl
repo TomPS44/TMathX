@@ -100,7 +100,7 @@ namespace glb
         template<typename T>
         GLB_INLINE constexpr bool ApproxEqual(T a, T b) noexcept
         {
-            return glbInternal::computeEqual<T, std::numeric_limits<T>::is_iec559>::call(a, b);
+            return glbIntern::computeEqual<T, std::numeric_limits<T>::is_iec559>::call(a, b);
         }
 
         template<typename T>

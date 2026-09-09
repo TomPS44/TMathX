@@ -2,7 +2,7 @@
 
 namespace glb
 {
-    namespace glbInternal
+    namespace glbIntern
     {
         template<int S, typename T, bool useSimd>
         struct vecDot
@@ -28,7 +28,7 @@ namespace glb
         template<typename T, bool useSimd>
         struct vecDot<2, T, useSimd>
         {
-            GLB_INLINE static constexpr T call(const vec<2, T>& a, const vec<2, T>& b) noexcept
+            GLB_INLINE static constexpr T call(const glbVec_T<2, T>& a, const glbVec_T<2, T>& b) noexcept
             {
                 return a.x * b.x + a.y * b.y;
             }
@@ -36,7 +36,7 @@ namespace glb
         template<typename T, bool useSimd>
         struct vecDot<3, T, useSimd>
         {
-            GLB_INLINE static constexpr T call(const vec<3, T>& a, const vec<3, T>& b) noexcept
+            GLB_INLINE static constexpr T call(const glbVec_T<3, T>& a, const glbVec_T<3, T>& b) noexcept
             {
                 return a.x * b.x + a.y * b.y + a.z * b.z;
             }
@@ -44,7 +44,7 @@ namespace glb
         template<typename T, bool useSimd>
         struct vecDot<4, T, useSimd>
         {
-            GLB_INLINE static constexpr T call(const vec<4, T>& a, const vec<4, T>& b) noexcept
+            GLB_INLINE static constexpr T call(const glbVec_T<4, T>& a, const glbVec_T<4, T>& b) noexcept
             {
                 return a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
             }
@@ -54,9 +54,9 @@ namespace glb
         template<typename T, bool useSimd>
         struct vecCross<3, T, useSimd>
         {
-            GLB_INLINE static constexpr vec<3, T> call(const vec<3, T>& a, const vec<3, T>& b) noexcept
+            GLB_INLINE static constexpr glbVec_T<3, T> call(const glbVec_T<3, T>& a, const glbVec_T<3, T>& b) noexcept
             {
-                return vec<3, T>(
+                return glbVec_T<3, T>(
                     a.y * b.z - a.z * b.y,
                     a.z * b.x - a.x * b.z,
                     a.x * b.y - a.y * b.x
@@ -66,9 +66,9 @@ namespace glb
         template<typename T, bool useSimd>
         struct vecCross<4, T, useSimd>
         {
-            GLB_INLINE static constexpr vec<4, T> call(const vec<4, T>& a, const vec<4, T>& b) noexcept
+            GLB_INLINE static constexpr glbVec_T<4, T> call(const glbVec_T<4, T>& a, const glbVec_T<4, T>& b) noexcept
             {
-                return vec<4, T>(
+                return glbVec_T<4, T>(
                     a.y * b.z - a.z * b.y,
                     a.z * b.x - a.x * b.z,
                     a.x * b.y - a.y * b.x,
@@ -81,7 +81,7 @@ namespace glb
         template<int S, typename T, bool useSimd>
         struct vecLength
         {
-            GLB_INLINE static constexpr T call(const vec<S, T>& v) noexcept
+            GLB_INLINE static constexpr T call(const glbVec_T<S, T>& v) noexcept
             {
                 return std::sqrt(Vec::Dot(v, v));
             }
@@ -91,7 +91,7 @@ namespace glb
         template<int S, typename T, bool useSimd>
         struct vecDistance
         {
-            GLB_INLINE static constexpr T call(const vec<S, T>& a, const vec<S, T>& b) noexcept
+            GLB_INLINE static constexpr T call(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
             {
                 return Vec::Length(b - a);
             }
@@ -101,89 +101,89 @@ namespace glb
         template<int S, typename T, bool useSimd>
         struct vecNormalize
         {
-            GLB_INLINE static constexpr vec<S, T> call(const vec<S, T>& v) noexcept
+            GLB_INLINE static constexpr glbVec_T<S, T> call(const glbVec_T<S, T>& v) noexcept
             {
                 const T invLen = static_cast<T>(1) / Vec::Length(v);
 
-                return vec<S, T>(
+                return glbVec_T<S, T>(
                     v * invLen
                 );
             }
         };
         
-    } // namespace glbInternal
+    } // namespace glbIntern
     
     namespace Vec
     {
         template<int S, typename T>
-        GLB_INLINE constexpr T Dot(const vec<S, T>& a, const vec<S, T>& b) noexcept
+        GLB_INLINE constexpr T Dot(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
         {
-            return glbInternal::vecDot<S, T, glbInternal::useSimd<S, T>::value>::call(a, b);
+            return glbIntern::vecDot<S, T, glbIntern::useSimd<S, T>::value>::call(a, b);
         }
 
         template<int S, typename T>
-        GLB_INLINE constexpr T Length(const vec<S, T>& v) noexcept
+        GLB_INLINE constexpr T Length(const glbVec_T<S, T>& v) noexcept
         {
-            return glbInternal::vecLength<S, T, glbInternal::useSimd<S, T>::value>::call(v);
+            return glbIntern::vecLength<S, T, glbIntern::useSimd<S, T>::value>::call(v);
         }
 
         template<int S, typename T>
-        GLB_INLINE constexpr T LengthSquared(const vec<S, T>& v) noexcept
+        GLB_INLINE constexpr T LengthSquared(const glbVec_T<S, T>& v) noexcept
         {
             return Vec::Dot(v, v);
         }
 
         template<int S, typename T>
-        GLB_INLINE constexpr T Distance(const vec<S, T>& a, const vec<S, T>& b) noexcept
+        GLB_INLINE constexpr T Distance(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
         {
-            return glbInternal::vecDistance<S, T, glbInternal::useSimd<S, T>::value>::call(a, b);
+            return glbIntern::vecDistance<S, T, glbIntern::useSimd<S, T>::value>::call(a, b);
         }
 
         template<int S, typename T>
-        GLB_INLINE constexpr T DistanceSquared(const vec<S, T>& a, const vec<S, T>& b) noexcept
+        GLB_INLINE constexpr T DistanceSquared(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
         {
-            const vec<S, T> v = b - a;
+            const glbVec_T<S, T> v = b - a;
 
             return Vec::Dot(v, v);
         }
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Normalize(const vec<S, T>& v) noexcept
+        GLB_INLINE constexpr glbVec_T<S, T> Normalize(const glbVec_T<S, T>& v) noexcept
         {
-            return glbInternal::vecNormalize<S, T, glbInternal::useSimd<S, T>::value>::call(v);
+            return glbIntern::vecNormalize<S, T, glbIntern::useSimd<S, T>::value>::call(v);
         }
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Cross(const vec<S, T>& a, const vec<S, T>& b) noexcept
+        GLB_INLINE constexpr glbVec_T<S, T> Cross(const glbVec_T<S, T>& a, const glbVec_T<S, T>& b) noexcept
         {
-            return glbInternal::vecCross<S, T, glbInternal::useSimd<S, T>::value>::call(a, b);
+            return glbIntern::vecCross<S, T, glbIntern::useSimd<S, T>::value>::call(a, b);
         }
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> FaceForward(const vec<S, T>& N, const vec<S, T>& I, const vec<S, T>& Nref) noexcept
+        GLB_INLINE constexpr glbVec_T<S, T> FaceForward(const glbVec_T<S, T>& N, const glbVec_T<S, T>& I, const glbVec_T<S, T>& Nref) noexcept
         {
             return Vec::Dot(Nref, I) < static_cast<T>(0) ? N : -N;
         }
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Reflect(const vec<S, T>& I, const vec<S, T>& N) noexcept
+        GLB_INLINE constexpr glbVec_T<S, T> Reflect(const glbVec_T<S, T>& I, const glbVec_T<S, T>& N) noexcept
         {
             return I - N * Vec::Dot(N, I) * static_cast<T>(2);
         }
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Refract(const vec<S, T>& I, const vec<S, T>& N, T eta) noexcept
+        GLB_INLINE constexpr glbVec_T<S, T> Refract(const glbVec_T<S, T>& I, const glbVec_T<S, T>& N, T eta) noexcept
         {
             T dotVal = Vec::Dot(N, I);
             T k = static_cast<T>(1) - eta * eta * (static_cast<T>(1) - dotVal * dotVal);
 
-            vec<S, T> res = (k >= static_cast<T>(0)) ? (eta * I - (eta * dotVal + std::sqrt(k) * N)) : vec<S, T>(static_cast<T>(0));
+            glbVec_T<S, T> res = (k >= static_cast<T>(0)) ? (eta * I - (eta * dotVal + std::sqrt(k) * N)) : glbVec_T<S, T>(static_cast<T>(0));
             
             return res;
         }
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> Project(const vec<S, T>& proj, const vec<S, T>& base) noexcept
+        GLB_INLINE constexpr glbVec_T<S, T> Project(const glbVec_T<S, T>& proj, const glbVec_T<S, T>& base) noexcept
         {
             // base * ( proj • base / ||base||² )
             //                       base • base
@@ -193,7 +193,7 @@ namespace glb
 
 
         template<int S, typename T>
-        GLB_INLINE constexpr vec<S, T> ClampMagnitude(const vec<S, T>& v, T maxLength) noexcept
+        GLB_INLINE constexpr glbVec_T<S, T> ClampMagnitude(const glbVec_T<S, T>& v, T maxLength) noexcept
         {
             T sqMag = Vec::LengthSquared(v);
 

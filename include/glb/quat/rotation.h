@@ -15,7 +15,7 @@ namespace glb
          * @param point The point to rotate
          */
         template<typename T>
-        GLB_INLINE constexpr vec<3, T> RotatePoint(const quat<T>& rot, const vec<3, T>& point) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T> RotatePoint(const glbQuat_T<T>& rot, const glbVec_T<3, T>& point) noexcept;
         /**
          * Rotates `point` clockwise around `pivot`, by the rotation `rot`
          * 
@@ -24,16 +24,16 @@ namespace glb
          * @param pivot The pivot of the rotation
          */
         template<typename T>
-        GLB_INLINE constexpr vec<3, T> RotatePointAroundPivot(const quat<T>& rot, const vec<3, T>& point, const vec<3, T>& pivot) noexcept;
+        GLB_INLINE constexpr glbVec_T<3, T> RotatePointAroundPivot(const glbQuat_T<T>& rot, const glbVec_T<3, T>& point, const glbVec_T<3, T>& pivot) noexcept;
 
 
         template<typename T>
-        GLB_INLINE constexpr mat<3, 3, T> ToMat3x3(const quat<T>& rot) noexcept;
+        GLB_INLINE constexpr glbMat_T<3, 3, T> ToMat3x3(const glbQuat_T<T>& rot) noexcept;
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> ToMat4x4(const quat<T>& rot) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> ToMat4x4(const glbQuat_T<T>& rot) noexcept;
 
         template<int R, int C, typename T>
-        GLB_INLINE constexpr quat<T> FromMat(const mat<R, C, T>& m) noexcept;
+        GLB_INLINE constexpr glbQuat_T<T> FromMat(const glbMat_T<R, C, T>& m) noexcept;
         
         
     } // namespace Qua

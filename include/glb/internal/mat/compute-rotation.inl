@@ -5,7 +5,7 @@ namespace glb
     namespace glbDetail
     {        
         template<typename T>
-        GLB_INLINE constexpr mat<3, 3, T> FromQuat_3x3_RH(const quat<T>& rot) noexcept
+        GLB_INLINE constexpr glbMat_T<3, 3, T> FromQuat_3x3_RH(const glbQuat_T<T>& rot) noexcept
         {
             const T xx = rot.x * rot.x;
             const T yy = rot.y * rot.y;
@@ -17,7 +17,7 @@ namespace glb
             const T yw = rot.y * rot.w;
             const T yz = rot.y * rot.z;
 
-            return mat<3, 3, T>(
+            return glbMat_T<3, 3, T>(
                 static_cast<T>(1) - static_cast<T>(2) * (yy + zz), static_cast<T>(2) * (xy - zw), static_cast<T>(2) * (xz + yw),
                 static_cast<T>(2) * (xy + zw), static_cast<T>(1) - static_cast<T>(2) * (xx + zz), static_cast<T>(2) * (yz - xw),
                 static_cast<T>(2) * (xz - yw), static_cast<T>(2) * (yz + xw), static_cast<T>(1) - static_cast<T>(2) * (xx + yy)
@@ -25,7 +25,7 @@ namespace glb
         }
         
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> FromQuat_4x4_RH(const quat<T>& rot) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> FromQuat_4x4_RH(const glbQuat_T<T>& rot) noexcept
         {
             const T xx = rot.x * rot.x;
             const T yy = rot.y * rot.y;
@@ -37,7 +37,7 @@ namespace glb
             const T yw = rot.y * rot.w;
             const T yz = rot.y * rot.z;
 
-            mat<4, 4, T> res;
+            glbMat_T<4, 4, T> res;
 
             res[0][0] = static_cast<T>(1) - static_cast<T>(2) * (yy + zz);
             res[1][0] = static_cast<T>(2) * (xy - zw);
@@ -57,7 +57,7 @@ namespace glb
 
 
         template<typename T>
-        GLB_INLINE constexpr mat<3, 3, T> FromQuat_3x3_LH(const quat<T>& rot) noexcept
+        GLB_INLINE constexpr glbMat_T<3, 3, T> FromQuat_3x3_LH(const glbQuat_T<T>& rot) noexcept
         {
             const T xx = rot.x * rot.x;
             const T yy = rot.y * rot.y;
@@ -69,7 +69,7 @@ namespace glb
             const T yw = rot.y * rot.w;
             const T yz = rot.y * rot.z;
 
-            return mat<3, 3, T>(
+            return glbMat_T<3, 3, T>(
                 static_cast<T>(1) - static_cast<T>(2) * (yy + zz), static_cast<T>(2) * (xy + zw), static_cast<T>(2) * (xz - yw),
                 static_cast<T>(2) * (xy - zw), static_cast<T>(1) - static_cast<T>(2) * (xx + zz), static_cast<T>(2) * (yz + xw),
                 static_cast<T>(2) * (xz + yw), static_cast<T>(2) * (yz - xw), static_cast<T>(1) - static_cast<T>(2) * (xx + yy)
@@ -77,7 +77,7 @@ namespace glb
         }
         
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> FromQuat_4x4_LH(const quat<T>& rot) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> FromQuat_4x4_LH(const glbQuat_T<T>& rot) noexcept
         {
             const T xx = rot.x * rot.x;
             const T yy = rot.y * rot.y;
@@ -89,7 +89,7 @@ namespace glb
             const T yw = rot.y * rot.w;
             const T yz = rot.y * rot.z;
 
-            mat<4, 4, T> res;
+            glbMat_T<4, 4, T> res;
 
             res[0][0] = static_cast<T>(1) - static_cast<T>(2) * (yy + zz);
             res[1][0] = static_cast<T>(2) * (xy + zw);
@@ -111,23 +111,23 @@ namespace glb
 
 
         template<typename T>
-        GLB_INLINE constexpr mat<2, 2, T> RotateZ_2x2_LH(T angle) noexcept
+        GLB_INLINE constexpr glbMat_T<2, 2, T> RotateZ_2x2_LH(T angle) noexcept
         {
             const T c = std::cos(angle);
             const T s = std::sin(angle);
 
-            return mat<2, 2, T>(
+            return glbMat_T<2, 2, T>(
                 c, -s,
                 s, c
             );
         }
         template<typename T>
-        GLB_INLINE constexpr mat<2, 2, T> RotateZ_2x2_RH(T angle) noexcept
+        GLB_INLINE constexpr glbMat_T<2, 2, T> RotateZ_2x2_RH(T angle) noexcept
         {
             const T c = std::cos(angle);
             const T s = std::sin(angle);
 
-            return mat<2, 2, T>(
+            return glbMat_T<2, 2, T>(
                 c, s,
                 -s, c
             );
@@ -135,12 +135,12 @@ namespace glb
 
 
         template<typename T>
-        GLB_INLINE constexpr mat<3, 3, T> RotateZ_LH(T angle) noexcept
+        GLB_INLINE constexpr glbMat_T<3, 3, T> RotateZ_LH(T angle) noexcept
         {
             const T c = std::cos(angle);
             const T s = std::sin(angle);
 
-            mat<3, 3, T> res;
+            glbMat_T<3, 3, T> res;
 
             res[0][0] = c;
             res[1][0] = s;
@@ -150,12 +150,12 @@ namespace glb
             return res;
         }
         template<typename T>
-        GLB_INLINE constexpr mat<3, 3, T> RotateZ_RH(T angle) noexcept
+        GLB_INLINE constexpr glbMat_T<3, 3, T> RotateZ_RH(T angle) noexcept
         {
             const T c = std::cos(angle);
             const T s = std::sin(angle);
 
-            mat<3, 3, T> res;
+            glbMat_T<3, 3, T> res;
 
             res[0][0] = c;
             res[1][0] = -s;
@@ -168,12 +168,12 @@ namespace glb
 
 
         template<typename T>
-        GLB_INLINE constexpr mat<3, 3, T> RotateX_LH(T angle) noexcept
+        GLB_INLINE constexpr glbMat_T<3, 3, T> RotateX_LH(T angle) noexcept
         {
             const T c = std::cos(angle);
             const T s = std::sin(angle);
 
-            mat<3, 3, T> res;
+            glbMat_T<3, 3, T> res;
 
             res[1][1] = c;
             res[2][1] = s;
@@ -183,12 +183,12 @@ namespace glb
             return res;
         }
         template<typename T>
-        GLB_INLINE constexpr mat<3, 3, T> RotateX_RH(T angle) noexcept
+        GLB_INLINE constexpr glbMat_T<3, 3, T> RotateX_RH(T angle) noexcept
         {
             const T c = std::cos(angle);
             const T s = std::sin(angle);
 
-            mat<3, 3, T> res;
+            glbMat_T<3, 3, T> res;
 
             res[1][1] = c;
             res[2][1] = -s;
@@ -201,12 +201,12 @@ namespace glb
 
 
         template<typename T>
-        GLB_INLINE constexpr mat<3, 3, T> RotateY_LH(T angle) noexcept
+        GLB_INLINE constexpr glbMat_T<3, 3, T> RotateY_LH(T angle) noexcept
         {
             const T c = std::cos(angle);
             const T s = std::sin(angle);
 
-            mat<3, 3, T> res;
+            glbMat_T<3, 3, T> res;
 
             res[0][0] = c;
             res[2][0] = -s;
@@ -216,12 +216,12 @@ namespace glb
             return res;
         }
         template<typename T>
-        GLB_INLINE constexpr mat<3, 3, T> RotateY_RH(T angle) noexcept
+        GLB_INLINE constexpr glbMat_T<3, 3, T> RotateY_RH(T angle) noexcept
         {
             const T c = std::cos(angle);
             const T s = std::sin(angle);
 
-            mat<3, 3, T> res;
+            glbMat_T<3, 3, T> res;
 
             res[0][0] = c;
             res[2][0] = s;
@@ -239,7 +239,7 @@ namespace glb
     {
 
         template<typename T>
-        GLB_INLINE constexpr mat<3, 3, T> FromQuat_3x3(const quat<T>& rot) noexcept
+        GLB_INLINE constexpr glbMat_T<3, 3, T> FromQuat_3x3(const glbQuat_T<T>& rot) noexcept
         {
 #           if defined(GLB_SET_COORDINATE_SYSTEM_LH)
                 return glbDetail::FromQuat_3x3_LH(rot);
@@ -251,7 +251,7 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> FromQuat_4x4(const quat<T>& rot) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> FromQuat_4x4(const glbQuat_T<T>& rot) noexcept
         {
 #           if defined(GLB_SET_COORDINATE_SYSTEM_LH)
                 return glbDetail::FromQuat_4x4_LH(rot);
@@ -266,7 +266,7 @@ namespace glb
 
 
         template<typename T>
-        GLB_INLINE constexpr mat<2, 2, T> RotateZ_2x2(T angle) noexcept
+        GLB_INLINE constexpr glbMat_T<2, 2, T> RotateZ_2x2(T angle) noexcept
         {
 #           if defined(GLB_SET_COORDINATE_SYSTEM_LH)
                 return glbDetail::RotateZ_2x2_LH(angle);
@@ -278,7 +278,7 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr mat<3, 3, T> RotateZ(T angle) noexcept
+        GLB_INLINE constexpr glbMat_T<3, 3, T> RotateZ(T angle) noexcept
         {
 #           if defined(GLB_SET_COORDINATE_SYSTEM_LH)
                 return glbDetail::RotateZ_LH(angle);
@@ -292,7 +292,7 @@ namespace glb
 
 
         template<typename T>
-        GLB_INLINE constexpr mat<3, 3, T> RotateX(T angle) noexcept
+        GLB_INLINE constexpr glbMat_T<3, 3, T> RotateX(T angle) noexcept
         {
 #           if defined(GLB_SET_COORDINATE_SYSTEM_LH)
                 return glbDetail::RotateX_LH(angle);
@@ -306,7 +306,7 @@ namespace glb
 
 
         template<typename T>
-        GLB_INLINE constexpr mat<3, 3, T> RotateY(T angle) noexcept
+        GLB_INLINE constexpr glbMat_T<3, 3, T> RotateY(T angle) noexcept
         {
 #           if defined(GLB_SET_COORDINATE_SYSTEM_LH)
                 return glbDetail::RotateY_LH(angle);
@@ -320,7 +320,7 @@ namespace glb
 
 
         template<typename T>
-        GLB_INLINE constexpr mat<3, 3, T> FromAxisAngle(const vec<3, T>& axis, T angle) noexcept
+        GLB_INLINE constexpr glbMat_T<3, 3, T> FromAxisAngle(const glbVec_T<3, T>& axis, T angle) noexcept
         {
             const T c = std::cos(angle);
             const T s = std::sin(angle);
@@ -331,7 +331,7 @@ namespace glb
             const T xz = axis.x * axis.z;
             const T yz = axis.y * axis.z;
 
-            return mat<3, 3, T>(
+            return glbMat_T<3, 3, T>(
                 axis.x * axis.x * oneMinusC + c, (xy * oneMinusC) - (axis.z * s), (xz * oneMinusC) + (axis.y * s),
                 (xy * oneMinusC) + (axis.z * s), axis.y * axis.y * oneMinusC + c, (yz * oneMinusC) - (axis.x * s),
                 (xz * oneMinusC) - (axis.y * s), (yz * oneMinusC) + (axis.x * s), axis.z * axis.z * oneMinusC + c

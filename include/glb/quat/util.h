@@ -7,9 +7,9 @@ namespace glb
     namespace Qua
     {
         template<typename From, typename To>
-        GLB_INLINE constexpr quat<To> CastTo(const quat<From>& q) noexcept
+        GLB_INLINE constexpr glbQuat_T<To> CastTo(const glbQuat_T<From>& q) noexcept
         {
-            return quat<To>(
+            return glbQuat_T<To>(
                 static_cast<To>(q.w),
                 static_cast<To>(q.x),
                 static_cast<To>(q.y),
@@ -21,9 +21,9 @@ namespace glb
          * @brief Generates a Quaternion with its `x, y, z, w` components being respectively `qx, qy, qz, qw`, in that order.
          */
         template<typename T>
-        GLB_INLINE constexpr quat<T> xyzw(T qx, T qy, T qz, T qw) noexcept
+        GLB_INLINE constexpr glbQuat_T<T> xyzw(T qx, T qy, T qz, T qw) noexcept
         {
-            return quat<T>(w, x, y, z);
+            return glbQuat_T<T>(w, x, y, z);
         }
 
 

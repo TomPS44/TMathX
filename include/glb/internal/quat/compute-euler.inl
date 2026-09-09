@@ -5,12 +5,12 @@ namespace glb
     namespace Qua
     {
         template<typename T>
-        GLB_INLINE constexpr quat<T> FromAxisAngle(const vec<3, T>& u, T angle) noexcept
+        GLB_INLINE constexpr glbQuat_T<T> FromAxisAngle(const glbVec_T<3, T>& u, T angle) noexcept
         {
             const T halfAng = angle * static_cast<T>(0.5); 
             const T sinHalfAng = std::sin(halfAng); 
 
-            return quat<T>(
+            return glbQuat_T<T>(
                 std::cos(halfAng),
                 u.x * sinHalfAng,
                 u.y * sinHalfAng,
@@ -23,7 +23,7 @@ namespace glb
         // ------------------------------------------------------
 
         template<typename T>
-        GLB_INLINE constexpr quat<T> FromEuler(const vec<3, T>& angles) noexcept
+        GLB_INLINE constexpr glbQuat_T<T> FromEuler(const glbVec_T<3, T>& angles) noexcept
         {
 #           if defined(GLB_SET_ROTATION_TYPE_INTRINSIC)
 #               if defined(GLB_SET_ROTATION_ORDER_XYZ)
@@ -71,15 +71,15 @@ namespace glb
 
 
         template<typename T>
-        GLB_INLINE constexpr quat<T> FromEuler(T x, T y, T z) noexcept
+        GLB_INLINE constexpr glbQuat_T<T> FromEuler(T x, T y, T z) noexcept
         {
-            return FromEuler(vec<3, T>{x, y, z});
+            return FromEuler(glbVec_T<3, T>{x, y, z});
         }
 
 
 
         template<typename T>
-        GLB_INLINE constexpr vec<3, T> ToEuler(const quat<T>& q) noexcept
+        GLB_INLINE constexpr glbVec_T<3, T> ToEuler(const glbQuat_T<T>& q) noexcept
         {
 #           if defined(GLB_SET_ROTATION_TYPE_INTRINSIC)
 #               if defined(GLB_SET_ROTATION_ORDER_XYZ)
@@ -141,7 +141,7 @@ namespace glb
         // ------------------------------------------------------
 
         template<typename T>
-        GLB_INLINE constexpr quat<T> FromEuler_XYZ(const vec<3, T>& angles) noexcept
+        GLB_INLINE constexpr glbQuat_T<T> FromEuler_XYZ(const glbVec_T<3, T>& angles) noexcept
         {
             const T halfX = angles.x * static_cast<T>(0.5);
             const T halfY = angles.y * static_cast<T>(0.5);
@@ -155,7 +155,7 @@ namespace glb
             const T sz = std::sin(halfZ);
 
 
-            return quat<T>(
+            return glbQuat_T<T>(
                 cx * cy * cz - sx * sy * sz,
                 sx * cy * cz + cx * sy * sz,
                 cx * sy * cz - sx * cy * sz,
@@ -163,7 +163,7 @@ namespace glb
             );
         }
         template<typename T>
-        GLB_INLINE constexpr quat<T> FromEuler_XZY(const vec<3, T>& angles) noexcept
+        GLB_INLINE constexpr glbQuat_T<T> FromEuler_XZY(const glbVec_T<3, T>& angles) noexcept
         {
             const T halfX = angles.x * static_cast<T>(0.5);
             const T halfY = angles.y * static_cast<T>(0.5);
@@ -177,7 +177,7 @@ namespace glb
             const T sz = std::sin(halfZ);
 
 
-            return quat<T>(
+            return glbQuat_T<T>(
                 cx * cy * cz + sx * sy * sz,
                 sx * cy * cz - cx * sy * sz,
                 cx * sy * cz - sx * cy * sz,
@@ -185,7 +185,7 @@ namespace glb
             );
         }
         template<typename T>
-        GLB_INLINE constexpr quat<T> FromEuler_YXZ(const vec<3, T>& angles) noexcept
+        GLB_INLINE constexpr glbQuat_T<T> FromEuler_YXZ(const glbVec_T<3, T>& angles) noexcept
         {
             const T halfX = angles.x * static_cast<T>(0.5);
             const T halfY = angles.y * static_cast<T>(0.5);
@@ -199,7 +199,7 @@ namespace glb
             const T sz = std::sin(halfZ);
             
 
-            return quat<T>(
+            return glbQuat_T<T>(
                 cx * cy * cz + sx * sy * sz,
                 sx * cy * cz + cx * sy * sz,
                 cx * sy * cz - sx * cy * sz,
@@ -207,7 +207,7 @@ namespace glb
             );
         }
         template<typename T>
-        GLB_INLINE constexpr quat<T> FromEuler_YZX(const vec<3, T>& angles) noexcept
+        GLB_INLINE constexpr glbQuat_T<T> FromEuler_YZX(const glbVec_T<3, T>& angles) noexcept
         {
             const T halfX = angles.x * static_cast<T>(0.5);
             const T halfY = angles.y * static_cast<T>(0.5);
@@ -221,7 +221,7 @@ namespace glb
             const T sz = std::sin(halfZ);
 
 
-            return quat<T>(
+            return glbQuat_T<T>(
                 cx * cy * cz - sx * sy * sz,
                 sx * cy * cz + cx * sy * sz,
                 cx * sy * cz + sx * cy * sz,
@@ -229,7 +229,7 @@ namespace glb
             );
         }
         template<typename T>
-        GLB_INLINE constexpr quat<T> FromEuler_ZXY(const vec<3, T>& angles) noexcept
+        GLB_INLINE constexpr glbQuat_T<T> FromEuler_ZXY(const glbVec_T<3, T>& angles) noexcept
         {
             const T halfX = angles.x * static_cast<T>(0.5);
             const T halfY = angles.y * static_cast<T>(0.5);
@@ -243,7 +243,7 @@ namespace glb
             const T sz = std::sin(halfZ);
 
 
-            return quat<T>(
+            return glbQuat_T<T>(
                 cx * cy * cz - sx * sy * sz,
                 sx * cy * cz - cx * sy * sz,
                 cx * sy * cz + sx * cy * sz,
@@ -251,7 +251,7 @@ namespace glb
             );
         }
         template<typename T>
-        GLB_INLINE constexpr quat<T> FromEuler_ZYX(const vec<3, T>& angles) noexcept
+        GLB_INLINE constexpr glbQuat_T<T> FromEuler_ZYX(const glbVec_T<3, T>& angles) noexcept
         {
             const T halfX = angles.x * static_cast<T>(0.5);
             const T halfY = angles.y * static_cast<T>(0.5);
@@ -265,7 +265,7 @@ namespace glb
             const T sz = std::sin(halfZ);
 
 
-            return quat<T>(
+            return glbQuat_T<T>(
                 cx * cy * cz + sx * sy * sz,
                 sx * cy * cz - cx * sy * sz,
                 cx * sy * cz + sx * cy * sz,
@@ -312,11 +312,11 @@ namespace glb
 
 
         template<typename T>
-        GLB_INLINE constexpr vec<3, T> ToEuler_XYZ(const quat<T>& q) noexcept
+        GLB_INLINE constexpr glbVec_T<3, T> ToEuler_XYZ(const glbQuat_T<T>& q) noexcept
         {
             const T sy = static_cast<T>(2) * (q.x * q.z + q.w * q.y);
             const T sySq = sy * sy;
-            vec<3, T> res;
+            glbVec_T<3, T> res;
 
             // Gimbal Lock
             if (sySq > static_cast<T>(0.9999))
@@ -346,11 +346,11 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr vec<3, T> ToEuler_XZY(const quat<T>& q) noexcept
+        GLB_INLINE constexpr glbVec_T<3, T> ToEuler_XZY(const glbQuat_T<T>& q) noexcept
         {
             const T sz = -(static_cast<T>(2) * (q.x * q.y - q.w * q.z));
             const T szSq = sz * sz;
-            vec<3, T> res;
+            glbVec_T<3, T> res;
 
             if (szSq > static_cast<T>(0.9999))
             {
@@ -378,11 +378,11 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr vec<3, T> ToEuler_YXZ(const quat<T>& q) noexcept
+        GLB_INLINE constexpr glbVec_T<3, T> ToEuler_YXZ(const glbQuat_T<T>& q) noexcept
         {
             const T sx = -(static_cast<T>(2) * (q.y * q.z - q.w * q.x));
             const T sxSq = sx * sx;
-            vec<3, T> res;
+            glbVec_T<3, T> res;
 
             if (sxSq > static_cast<T>(0.9999))
             {
@@ -410,11 +410,11 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr vec<3, T> ToEuler_YZX(const quat<T>& q) noexcept
+        GLB_INLINE constexpr glbVec_T<3, T> ToEuler_YZX(const glbQuat_T<T>& q) noexcept
         {
             const T sz = static_cast<T>(2) * (q.x * q.y + q.w * q.z);
             const T szSq = sz * sz;
-            vec<3, T> res;
+            glbVec_T<3, T> res;
 
             if (szSq > static_cast<T>(0.9999))
             {
@@ -441,11 +441,11 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr vec<3, T> ToEuler_ZXY(const quat<T>& q) noexcept
+        GLB_INLINE constexpr glbVec_T<3, T> ToEuler_ZXY(const glbQuat_T<T>& q) noexcept
         {
             const T sx = static_cast<T>(2) * (q.y * q.z + q.w * q.x);
             const T sxSq = sx * sx;
-            vec<3, T> res;
+            glbVec_T<3, T> res;
 
             if (sxSq > static_cast<T>(0.9999))
             {
@@ -473,11 +473,11 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr vec<3, T> ToEuler_ZYX(const quat<T>& q) noexcept
+        GLB_INLINE constexpr glbVec_T<3, T> ToEuler_ZYX(const glbQuat_T<T>& q) noexcept
         {
             const T sy = -(static_cast<T>(2) * (q.x * q.z - q.w * q.y));
             const T sySq = sy * sy;
-            vec<3, T> res;
+            glbVec_T<3, T> res;
 
             if (sySq > static_cast<T>(0.9999))
             {

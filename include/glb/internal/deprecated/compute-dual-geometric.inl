@@ -15,41 +15,41 @@
  
 
 #include "../type-quat.h"
-#include "glb/quat/geometric.h"
+#include "../../quat/geometric.h"
 
 namespace glb
 {
     namespace DQua
     {
         template<typename T>
-        GLB_INLINE constexpr dQuat<T> Normalize(const dQuat<T>& dq) noexcept
+        GLB_INLINE constexpr glbDQuat_T<T> Normalize(const glbDQuat_T<T>& dq) noexcept
         {
             const T realL = Qua::Length(dq.real);
 
-            const quat<T> normReal = dq.real / realL;
-            const quat<T> normDual = dq.dual / realL; 
+            const glbQuat_T<T> normReal = dq.real / realL;
+            const glbQuat_T<T> normDual = dq.dual / realL; 
 
-            return dQuat<T>(
+            return glbDQuat_T<T>(
                 normReal,
                 normDual - normReal * (Qua::Dot(normReal, normDual))
             );
         }
 
         template<typename T>
-        GLB_INLINE constexpr dQuat<T> Conjugate(const dQuat<T>& dq) noexcept
+        GLB_INLINE constexpr glbDQuat_T<T> Conjugate(const glbDQuat_T<T>& dq) noexcept
         {
-            return dQuat<T>(
+            return glbDQuat_T<T>(
                 Qua::Conjugate(dq.real),
                 Qua::Conjugate(dq.dual)
             );
         }
 
         template<typename T>
-        GLB_INLINE constexpr dQuat<T> Inverse(const dQuat<T>& dq) noexcept
+        GLB_INLINE constexpr glbDQuat_T<T> Inverse(const glbDQuat_T<T>& dq) noexcept
         {
-            // const quat<T> invReal = Qua::inverse(dq.real);
+            // const glbQuat_T<T> invReal = Qua::inverse(dq.real);
 
-            // return dQuat<T>(
+            // return glbDQuat_T<T>(
             //     invReal,
             //     invReal * dq.dual * invReal
             // );
@@ -57,9 +57,9 @@ namespace glb
             const T l2 = Qua::LengthSquared(dq.real);
             const T l4 = l2 * l2;
 
-            const quat<T> conjReal = Qua::Conjugate(dq.real);
+            const glbQuat_T<T> conjReal = Qua::Conjugate(dq.real);
 
-            return dQuat<T>(
+            return glbDQuat_T<T>(
                 conjReal / l2,
                 -((conjReal * dq.dual * conjReal) / l4)
             );
@@ -68,16 +68,16 @@ namespace glb
 
 
         template<typename T>
-        GLB_INLINE constexpr quat<T> GetRotation(const dQuat<T>& dq) noexcept
+        GLB_INLINE constexpr glbQuat_T<T> GetRotation(const glbDQuat_T<T>& dq) noexcept
         {
             return dq.real;
         }
         
         template<typename T>
-        GLB_INLINE constexpr vec<3, T> GetTranslation(const dQuat<T>& dq) noexcept
+        GLB_INLINE constexpr glbVec_T<3, T> GetTranslation(const glbDQuat_T<T>& dq) noexcept
         {
-            quat<T> trsl = static_cast<T>(2) * (dq.dual * Qua::Conjugate(dq.real));
-            return vec<3, T>(trsl.x, trsl.y, trsl.z);
+            glbQuat_T<T> trsl = static_cast<T>(2) * (dq.dual * Qua::Conjugate(dq.real));
+            return glbVec_T<3, T>(trsl.x, trsl.y, trsl.z);
         }
 
     } // namespace DQua

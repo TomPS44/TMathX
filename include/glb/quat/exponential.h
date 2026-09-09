@@ -13,7 +13,7 @@ namespace glb
          * `Quat(e, (0 0 0))` if the length of the imaginary part is 0, otherwise the exponent calculated with the base formula.
          */
         template<typename T>
-        GLB_INLINE constexpr quat<T> Exp(const quat<T>& q) noexcept;
+        GLB_INLINE constexpr glbQuat_T<T> Exp(const glbQuat_T<T>& q) noexcept;
         
         /**
          * @brief Calculates the logarithm of the Quaternion `q`, and returns a new Quaternion. 
@@ -24,7 +24,7 @@ namespace glb
          * with the base formula.
          */
         template<typename T>
-        GLB_INLINE constexpr quat<T> Log(const quat<T>& q) noexcept;
+        GLB_INLINE constexpr glbQuat_T<T> Log(const glbQuat_T<T>& q) noexcept;
 
         /**
          * @brief Calculates the Quaternion `q` raised to the power `exp`, and returns a new Quaternion.
@@ -32,14 +32,14 @@ namespace glb
          * The formula is Exp(`exp` * Log(`q`))
          */
         template<typename T>
-        GLB_INLINE constexpr quat<T> Pow(const quat<T>& q, T exp) noexcept;
+        GLB_INLINE constexpr glbQuat_T<T> Pow(const glbQuat_T<T>& q, T exp) noexcept;
         /**
          * @brief Calculates the square root of the Quaternion `q`, and returns a new Quaternion.
          * 
          * The formula is Pow(q, 0.5)
          */
         template<typename T>
-        GLB_INLINE constexpr quat<T> Sqrt(const quat<T>& q) noexcept;
+        GLB_INLINE constexpr glbQuat_T<T> Sqrt(const glbQuat_T<T>& q) noexcept;
 
     } // namespace Qua
     

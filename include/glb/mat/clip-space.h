@@ -15,7 +15,7 @@ namespace glb
          * @param zFar The Z value of the far plane
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective_LH_Z0_YUP(T fovY, T aspect, T zNear, T zFar) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective_LH_Z0_YUP(T fovY, T aspect, T zNear, T zFar) noexcept;
 
         /**
          * Generates a `left-handed` perspective matrix, with `Z` in range of `[-1; 1]` and `Y` going `upwards` 
@@ -26,7 +26,7 @@ namespace glb
          * @param zFar The Z value of the far plane
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective_LH_ZN1_YUP(T fovY, T aspect, T zNear, T zFar) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective_LH_ZN1_YUP(T fovY, T aspect, T zNear, T zFar) noexcept;
 
         /**
          * Generates a `left-handed` perspective matrix, with `Z` in range of `[0; 1]` and `Y` going `downwards` 
@@ -37,7 +37,7 @@ namespace glb
          * @param zFar The Z value of the far plane
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective_LH_Z0_YDOWN(T fovY, T aspect, T zNear, T zFar) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective_LH_Z0_YDOWN(T fovY, T aspect, T zNear, T zFar) noexcept;
 
         /**
          * Generates a `left-handed` perspective matrix, with `Z` in range of `[-1; 1]` and `Y` going `downwards`
@@ -48,7 +48,7 @@ namespace glb
          * @param zFar The Z value of the far plane
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective_LH_ZN1_YDOWN(T fovY, T aspect, T zNear, T zFar) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective_LH_ZN1_YDOWN(T fovY, T aspect, T zNear, T zFar) noexcept;
 
         /**
          * @brief Generates a `right-handed` perspective matrix, with `Z` in range of `[0; 1]` and `Y` going `upwards` 
@@ -59,7 +59,7 @@ namespace glb
          * @param zFar The Z value of the far plane
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective_RH_Z0_YUP(T fovY, T aspect, T zNear, T zFar) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective_RH_Z0_YUP(T fovY, T aspect, T zNear, T zFar) noexcept;
 
         /**
          * Generates a `right-handed` perspective matrix, with `Z` in range of `[-1; 1]` and `Y` going `upwards` 
@@ -70,7 +70,7 @@ namespace glb
          * @param zFar The Z value of the far plane
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective_RH_ZN1_YUP(T fovY, T aspect, T zNear, T zFar) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective_RH_ZN1_YUP(T fovY, T aspect, T zNear, T zFar) noexcept;
 
         /**
          * Generates a `right-handed` perspective matrix, with `Z` in range of `[0; 1]` and `Y` going `downwards` 
@@ -81,7 +81,7 @@ namespace glb
          * @param zFar The Z value of the far plane
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective_RH_Z0_YDOWN(T fovY, T aspect, T zNear, T zFar) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective_RH_Z0_YDOWN(T fovY, T aspect, T zNear, T zFar) noexcept;
 
         /**
          * Generates a `right-handed` perspective matrix, with `Z` in range of `[-1; 1]` and `Y` going `downwards` 
@@ -92,7 +92,7 @@ namespace glb
          * @param zFar The Z value of the far plane
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective_RH_ZN1_YDOWN(T fovY, T aspect, T zNear, T zFar) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective_RH_ZN1_YDOWN(T fovY, T aspect, T zNear, T zFar) noexcept;
 
 
 
@@ -109,8 +109,8 @@ namespace glb
          * @param far The Z coordinate of the far plane
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Orthographic_LH_Z0(T left, T right, T bottom, T top, T near, T far) noexcept;
-        // GLB_INLINE constexpr mat<4, 4, T> Orthographic_LH_Z0_YUP(T left, T right, T bottom, T top, T near, T far) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_LH_Z0(T left, T right, T bottom, T top, T near, T far) noexcept;
+        // GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_LH_Z0_YUP(T left, T right, T bottom, T top, T near, T far) noexcept;
 
         /**
          * Generates a `left-handed` orthographic matrix, with `Z` in range of `[-1; 1]` and `Y` going `upwards`
@@ -123,8 +123,8 @@ namespace glb
          * @param far The Z coordinate of the far plane
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Orthographic_LH_ZN1(T left, T right, T bottom, T top, T near, T far) noexcept;
-        // GLB_INLINE constexpr mat<4, 4, T> Orthographic_LH_ZN1_YUP(T left, T right, T bottom, T top, T near, T far) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_LH_ZN1(T left, T right, T bottom, T top, T near, T far) noexcept;
+        // GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_LH_ZN1_YUP(T left, T right, T bottom, T top, T near, T far) noexcept;
 
         // /**
         //  * Generates a `left-handed` orthographic matrix, with `Z` in range of `[0; 1]` and `Y` going `downwards`
@@ -137,7 +137,7 @@ namespace glb
         //  * @param far The Z coordinate of the far corner
         //  */
         // template<typename T>
-        // GLB_INLINE constexpr mat<4, 4, T> Orthographic_LH_Z0_YDOWN(T left, T right, T bottom, T top, T near, T far) noexcept;
+        // GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_LH_Z0_YDOWN(T left, T right, T bottom, T top, T near, T far) noexcept;
 
         // /**
         //  * Generates a `left-handed` orthographic matrix, with `Z` in range of `[-1; 1]` and `Y` going `downwards`
@@ -150,7 +150,7 @@ namespace glb
         //  * @param far The Z coordinate of the far corner
         //  */
         // template<typename T>
-        // GLB_INLINE constexpr mat<4, 4, T> Orthographic_LH_ZN1_YDOWN(T left, T right, T bottom, T top, T near, T far) noexcept;
+        // GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_LH_ZN1_YDOWN(T left, T right, T bottom, T top, T near, T far) noexcept;
 
         /**
          * Generates a `right-handed` orthographic matrix, with `Z` in range of `[0; 1]` and `Y` going `upwards`
@@ -163,8 +163,8 @@ namespace glb
          * @param far The Z coordinate of the far plane
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Orthographic_RH_Z0(T left, T right, T bottom, T top, T near, T far) noexcept;
-        // GLB_INLINE constexpr mat<4, 4, T> Orthographic_RH_Z0_YUP(T left, T right, T bottom, T top, T near, T far) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_RH_Z0(T left, T right, T bottom, T top, T near, T far) noexcept;
+        // GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_RH_Z0_YUP(T left, T right, T bottom, T top, T near, T far) noexcept;
 
         /**
          * Generates a `right-handed` orthographic matrix, with `Z` in range of `[-1; 1]` and `Y` going `upwards`
@@ -177,8 +177,8 @@ namespace glb
          * @param far The Z coordinate of the far plane
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Orthographic_RH_ZN1(T left, T right, T bottom, T top, T near, T far) noexcept;
-        // GLB_INLINE constexpr mat<4, 4, T> Orthographic_RH_ZN1_YUP(T left, T right, T bottom, T top, T near, T far) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_RH_ZN1(T left, T right, T bottom, T top, T near, T far) noexcept;
+        // GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_RH_ZN1_YUP(T left, T right, T bottom, T top, T near, T far) noexcept;
 
         // /**
         //  * Generates a `right-handed` orthographic matrix, with `Z` in range of `[0; 1]` and `Y` going `downwards`
@@ -191,7 +191,7 @@ namespace glb
         //  * @param far The Z coordinate of the far corner
         //  */
         // template<typename T>
-        // GLB_INLINE constexpr mat<4, 4, T> Orthographic_RH_Z0_YDOWN(T left, T right, T bottom, T top, T near, T far) noexcept;
+        // GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_RH_Z0_YDOWN(T left, T right, T bottom, T top, T near, T far) noexcept;
 
         // /**
         //  * Generates a `right-handed` orthographic matrix, with `Z` in range of `[-1; 1]` and `Y` going `downwards`
@@ -204,7 +204,7 @@ namespace glb
         //  * @param far The Z coordinate of the far corner
         //  */
         // template<typename T>
-        // GLB_INLINE constexpr mat<4, 4, T> Orthographic_RH_ZN1_YDOWN(T left, T right, T bottom, T top, T near, T far) noexcept;
+        // GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_RH_ZN1_YDOWN(T left, T right, T bottom, T top, T near, T far) noexcept;
 
 
     } // namespace glbDetail
@@ -225,7 +225,7 @@ namespace glb
          * @param zFar The Z coordinate of the far plane 
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective(T fovY, T aspect, T zNear, T zFar) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective(T fovY, T aspect, T zNear, T zFar) noexcept;
 
         /**
          * Generates an orthographic matrix.
@@ -242,7 +242,7 @@ namespace glb
          * @param far The Z coordinate of the far plane
          */
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Orthographic(T left, T right, T bottom, T top, T near, T far) noexcept;
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic(T left, T right, T bottom, T top, T near, T far) noexcept;
 
     } // namespace Mat
     

@@ -17,8 +17,9 @@
 
 namespace glb
 {
+#if !defined(GLB_FORCE_NO_ALIAS)
     // A Dual Quaternion of `float`
-    using DQuat = dQuat<float>;
-    // A Dual Quaternion of `double`
-    using DQuat_f64 = dQuat<double>;
+    using DQuat = glbDQuat_T<float>;
+
+#endif
 }

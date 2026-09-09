@@ -22,63 +22,63 @@ namespace glb
      * DO NOT USE THIS TYPE, IT'S STILL IN DEVELOPMENT !!!
      */
     template<typename T>
-    struct dQuat
+    struct alignas(sizeof(T) * 4) glbDQuat_T
     {
     public:
         
-        quat<T> real, dual;
+        glbQuat_T<T> real, dual;
         
 
-        GLB_INLINE constexpr dQuat() noexcept;
-        GLB_INLINE constexpr dQuat(const dQuat<T>& dq) noexcept;
-        GLB_INLINE constexpr dQuat(const quat<T>& rot, const vec<3, T>& trsl) noexcept;
-        GLB_INLINE constexpr dQuat(const quat<T>& rot, const quat<T>& trsl) noexcept;
-        GLB_INLINE constexpr dQuat(const quat<T>& rot) noexcept;
-        GLB_INLINE constexpr dQuat(const vec<3, T>& trsl) noexcept;
+        GLB_INLINE constexpr glbDQuat_T() noexcept;
+        GLB_INLINE constexpr glbDQuat_T(const glbDQuat_T<T>& dq) noexcept;
+        GLB_INLINE constexpr glbDQuat_T(const glbQuat_T<T>& rot, const glbVec_T<3, T>& trsl) noexcept;
+        GLB_INLINE constexpr glbDQuat_T(const glbQuat_T<T>& rot, const glbQuat_T<T>& trsl) noexcept;
+        GLB_INLINE constexpr glbDQuat_T(const glbQuat_T<T>& rot) noexcept;
+        GLB_INLINE constexpr glbDQuat_T(const glbVec_T<3, T>& trsl) noexcept;
 
 
-        GLB_INLINE constexpr quat<T>& operator[](int i);
-        GLB_INLINE constexpr const quat<T>& operator[](int i) const;
+        GLB_INLINE constexpr glbQuat_T<T>& operator[](int i);
+        GLB_INLINE constexpr const glbQuat_T<T>& operator[](int i) const;
 
-        GLB_INLINE constexpr dQuat<T>& operator=(const dQuat<T>& dq) = default;
+        GLB_INLINE constexpr glbDQuat_T<T>& operator=(const glbDQuat_T<T>& dq) = default;
 
 
-        GLB_INLINE constexpr dQuat<T>& operator+=(const dQuat<T>& dq) noexcept;
-        GLB_INLINE constexpr dQuat<T>& operator-=(const dQuat<T>& dq) noexcept;
+        GLB_INLINE constexpr glbDQuat_T<T>& operator+=(const glbDQuat_T<T>& dq) noexcept;
+        GLB_INLINE constexpr glbDQuat_T<T>& operator-=(const glbDQuat_T<T>& dq) noexcept;
         
-        GLB_INLINE constexpr dQuat<T>& operator*=(const dQuat<T>& dq) noexcept;
-        GLB_INLINE constexpr dQuat<T>& operator*=(T scalar) noexcept;
+        GLB_INLINE constexpr glbDQuat_T<T>& operator*=(const glbDQuat_T<T>& dq) noexcept;
+        GLB_INLINE constexpr glbDQuat_T<T>& operator*=(T scalar) noexcept;
 
-        GLB_INLINE constexpr dQuat<T>& operator/=(T scalar) noexcept;
+        GLB_INLINE constexpr glbDQuat_T<T>& operator/=(T scalar) noexcept;
     };
 
     template<typename T>
-    GLB_INLINE constexpr dQuat<T> operator+(const dQuat<T>& dq) noexcept;
+    GLB_INLINE constexpr glbDQuat_T<T> operator+(const glbDQuat_T<T>& dq) noexcept;
     template<typename T>
-    GLB_INLINE constexpr dQuat<T> operator-(const dQuat<T>& dq) noexcept;
+    GLB_INLINE constexpr glbDQuat_T<T> operator-(const glbDQuat_T<T>& dq) noexcept;
 
     template<typename T>
-    GLB_INLINE constexpr dQuat<T> operator+(const dQuat<T>& a, const dQuat<T>& b) noexcept;
+    GLB_INLINE constexpr glbDQuat_T<T> operator+(const glbDQuat_T<T>& a, const glbDQuat_T<T>& b) noexcept;
     template<typename T>
-    GLB_INLINE constexpr dQuat<T> operator-(const dQuat<T>& a, const dQuat<T>& b) noexcept;
+    GLB_INLINE constexpr glbDQuat_T<T> operator-(const glbDQuat_T<T>& a, const glbDQuat_T<T>& b) noexcept;
 
     template<typename T>
-    GLB_INLINE constexpr dQuat<T> operator*(const dQuat<T>& a, const dQuat<T>& b) noexcept;
+    GLB_INLINE constexpr glbDQuat_T<T> operator*(const glbDQuat_T<T>& a, const glbDQuat_T<T>& b) noexcept;
     template<typename T>
-    GLB_INLINE constexpr dQuat<T> operator*(const dQuat<T>& dq, T scalar) noexcept;
+    GLB_INLINE constexpr glbDQuat_T<T> operator*(const glbDQuat_T<T>& dq, T scalar) noexcept;
     template<typename T>
-    GLB_INLINE constexpr dQuat<T> operator*(T scalar, const dQuat<T>& dq) noexcept;
+    GLB_INLINE constexpr glbDQuat_T<T> operator*(T scalar, const glbDQuat_T<T>& dq) noexcept;
     template<typename T>
-    GLB_INLINE constexpr vec<3, T> operator*(const dQuat<T>& dq, const vec<3, T>& point) noexcept;
+    GLB_INLINE constexpr glbVec_T<3, T> operator*(const glbDQuat_T<T>& dq, const glbVec_T<3, T>& point) noexcept;
 
     template<typename T>
-    GLB_INLINE constexpr dQuat<T> operator/(const dQuat<T>& dq, T scalar) noexcept;
+    GLB_INLINE constexpr glbDQuat_T<T> operator/(const glbDQuat_T<T>& dq, T scalar) noexcept;
 
 
     template<typename T>
-    GLB_INLINE constexpr bool operator==(const dQuat<T>& a, const dQuat<T>& b) noexcept;
+    GLB_INLINE constexpr bool operator==(const glbDQuat_T<T>& a, const glbDQuat_T<T>& b) noexcept;
     template<typename T>
-    GLB_INLINE constexpr bool operator!=(const dQuat<T>& a, const dQuat<T>& b) noexcept;
+    GLB_INLINE constexpr bool operator!=(const glbDQuat_T<T>& a, const glbDQuat_T<T>& b) noexcept;
 } // namespace glb
 
 #include "type-dualquat.inl"

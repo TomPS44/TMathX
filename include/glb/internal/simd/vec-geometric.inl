@@ -2,7 +2,7 @@
 
 namespace glb
 {
-    namespace glbInternal
+    namespace glbIntern
     {
 
 #       if defined(GLB_SIMD_SSE)
@@ -35,7 +35,7 @@ namespace glb
 
         GLB_INLINE static __m128 vecLength__m128(__m128 v) noexcept
         {
-            const __m128 dot = glbInternal::vecDot__m128(v, v);
+            const __m128 dot = glbIntern::vecDot__m128(v, v);
 
             return _mm_sqrt_ps(dot);
         }
@@ -45,7 +45,7 @@ namespace glb
         {
             const __m128 vec = _mm_sub_ps(b, a);
 
-            return glbInternal::vecLength__m128(vec);
+            return glbIntern::vecLength__m128(vec);
         }
 
 
@@ -69,7 +69,7 @@ namespace glb
 
         GLB_INLINE static __m128 vecNormalize__m128(__m128 v) noexcept
         {
-            const __m128 dot = glbInternal::vecDot__m128(v, v);
+            const __m128 dot = glbIntern::vecDot__m128(v, v);
             const __m128 invSqrt = _mm_rsqrt_ps(dot);
             const __m128 mul = _mm_mul_ps(dot, invSqrt);
 
@@ -80,7 +80,7 @@ namespace glb
 
         GLB_INLINE static __m128 vecReflect__m128(__m128 I, __m128 N)
         {
-        	const __m128 dot = glbInternal::vecDot__m128(N, I);
+        	const __m128 dot = glbIntern::vecDot__m128(N, I);
 
         	const __m128 mul0 = _mm_mul_ps(N, dot);
         	const __m128 mul1 = _mm_mul_ps(mul0, _mm_set1_ps(2.0f));

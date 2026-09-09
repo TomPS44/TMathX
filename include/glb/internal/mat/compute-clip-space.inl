@@ -5,9 +5,9 @@ namespace glb
     namespace glbDetail
     {
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective_LH_Z0_YUP(T fovY, T aspect, T zNear, T zFar) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective_LH_Z0_YUP(T fovY, T aspect, T zNear, T zFar) noexcept
         {
-            mat<4, 4, T> res(static_cast<T>(0)); // Sets the matrix to all 0
+            glbMat_T<4, 4, T> res(static_cast<T>(0)); // Sets the matrix to all 0
 
             const T invTanHalfFov = static_cast<T>(1) / std::tan(fovY * static_cast<T>(0.5)); 
             const T invFarMinusNear = static_cast<T>(1) / (zFar - zNear);
@@ -22,9 +22,9 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective_LH_ZN1_YUP(T fovY, T aspect, T zNear, T zFar) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective_LH_ZN1_YUP(T fovY, T aspect, T zNear, T zFar) noexcept
         {
-            mat<4, 4, T> res(static_cast<T>(0)); // Sets the matrix to all 0
+            glbMat_T<4, 4, T> res(static_cast<T>(0)); // Sets the matrix to all 0
 
             const T invTanHalfFov = static_cast<T>(1) / std::tan(fovY * static_cast<T>(0.5)); 
             const T invFarMinusNear = static_cast<T>(1) / (zFar - zNear);
@@ -39,9 +39,9 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective_LH_Z0_YDOWN(T fovY, T aspect, T zNear, T zFar) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective_LH_Z0_YDOWN(T fovY, T aspect, T zNear, T zFar) noexcept
         {
-            mat<4, 4, T> res(static_cast<T>(0)); // Sets the matrix to all 0
+            glbMat_T<4, 4, T> res(static_cast<T>(0)); // Sets the matrix to all 0
 
             const T invTanHalfFov = static_cast<T>(1) / std::tan(fovY * static_cast<T>(0.5)); 
             const T invFarMinusNear = static_cast<T>(1) / (zFar - zNear);
@@ -56,9 +56,9 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective_LH_ZN1_YDOWN(T fovY, T aspect, T zNear, T zFar) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective_LH_ZN1_YDOWN(T fovY, T aspect, T zNear, T zFar) noexcept
         {
-            mat<4, 4, T> res(static_cast<T>(0)); // Sets the matrix to all 0
+            glbMat_T<4, 4, T> res(static_cast<T>(0)); // Sets the matrix to all 0
 
             const T invTanHalfFov = static_cast<T>(1) / std::tan(fovY * static_cast<T>(0.5)); 
             const T invFarMinusNear = static_cast<T>(1) / (zFar - zNear);
@@ -73,9 +73,9 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective_RH_Z0_YUP(T fovY, T aspect, T zNear, T zFar) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective_RH_Z0_YUP(T fovY, T aspect, T zNear, T zFar) noexcept
         {
-            mat<4, 4, T> res(static_cast<T>(0)); // Sets the matrix to all 0
+            glbMat_T<4, 4, T> res(static_cast<T>(0)); // Sets the matrix to all 0
 
             const T invTanHalfFov = static_cast<T>(1) / std::tan(fovY * static_cast<T>(0.5)); 
             const T invFarMinusNear = static_cast<T>(1) / (zFar - zNear);
@@ -90,9 +90,9 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective_RH_ZN1_YUP(T fovY, T aspect, T zNear, T zFar) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective_RH_ZN1_YUP(T fovY, T aspect, T zNear, T zFar) noexcept
         {
-            mat<4, 4, T> res(static_cast<T>(0)); // Sets the matrix to all 0
+            glbMat_T<4, 4, T> res(static_cast<T>(0)); // Sets the matrix to all 0
 
             const T invTanHalfFov = static_cast<T>(1) / std::tan(fovY * static_cast<T>(0.5)); 
             const T invFarMinusNear = static_cast<T>(1) / (zFar - zNear);
@@ -107,9 +107,9 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective_RH_Z0_YDOWN(T fovY, T aspect, T zNear, T zFar) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective_RH_Z0_YDOWN(T fovY, T aspect, T zNear, T zFar) noexcept
         {
-            mat<4, 4, T> res(static_cast<T>(0)); // Sets the matrix to all 0
+            glbMat_T<4, 4, T> res(static_cast<T>(0)); // Sets the matrix to all 0
 
             const T invTanHalfFov = static_cast<T>(1) / std::tan(fovY * static_cast<T>(0.5)); 
             const T invFarMinusNear = static_cast<T>(1) / (zFar - zNear);
@@ -124,9 +124,9 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective_RH_ZN1_YDOWN(T fovY, T aspect, T zNear, T zFar) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective_RH_ZN1_YDOWN(T fovY, T aspect, T zNear, T zFar) noexcept
         {
-            mat<4, 4, T> res(static_cast<T>(0)); // Sets the matrix to all 0
+            glbMat_T<4, 4, T> res(static_cast<T>(0)); // Sets the matrix to all 0
 
             const T invTanHalfFov = static_cast<T>(1) / std::tan(fovY * static_cast<T>(0.5)); 
             const T invFarMinusNear = static_cast<T>(1) / (zFar - zNear);
@@ -146,10 +146,10 @@ namespace glb
 
 
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Orthographic_LH_Z0(T left, T right, T bottom, T top, T near, T far) noexcept
-        // GLB_INLINE constexpr mat<4, 4, T> Orthographic_LH_Z0_YUP(T left, T right, T bottom, T top, T near, T far) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_LH_Z0(T left, T right, T bottom, T top, T near, T far) noexcept
+        // GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_LH_Z0_YUP(T left, T right, T bottom, T top, T near, T far) noexcept
         {
-            mat<4, 4, T> res;
+            glbMat_T<4, 4, T> res;
 
             const T invRightMinusLeft = static_cast<T>(1) / (right - left); 
             const T invTopMinusBottom = static_cast<T>(1) / (top - bottom); 
@@ -166,10 +166,10 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Orthographic_RH_Z0(T left, T right, T bottom, T top, T near, T far) noexcept
-        // GLB_INLINE constexpr mat<4, 4, T> Orthographic_RH_Z0_YUP(T left, T right, T bottom, T top, T near, T far) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_RH_Z0(T left, T right, T bottom, T top, T near, T far) noexcept
+        // GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_RH_Z0_YUP(T left, T right, T bottom, T top, T near, T far) noexcept
         {
-            mat<4, 4, T> res;
+            glbMat_T<4, 4, T> res;
 
             const T invRightMinusLeft = static_cast<T>(1) / (right - left); 
             const T invTopMinusBottom = static_cast<T>(1) / (top - bottom); 
@@ -186,9 +186,9 @@ namespace glb
         }
 
         // template<typename T>
-        // GLB_INLINE constexpr mat<4, 4, T> Orthographic_LH_Z0_YDOWN(T left, T right, T bottom, T top, T near, T far) noexcept
+        // GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_LH_Z0_YDOWN(T left, T right, T bottom, T top, T near, T far) noexcept
         // {
-        //     mat<4, 4, T> res;
+        //     glbMat_T<4, 4, T> res;
 
         //     const T invRightMinusLeft = static_cast<T>(1) / (right - left); 
         //     const T invTopMinusBottom = static_cast<T>(1) / (top - bottom); 
@@ -205,9 +205,9 @@ namespace glb
         // }
 
         // template<typename T>
-        // GLB_INLINE constexpr mat<4, 4, T> Orthographic_RH_Z0_YDOWN(T left, T right, T bottom, T top, T near, T far) noexcept
+        // GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_RH_Z0_YDOWN(T left, T right, T bottom, T top, T near, T far) noexcept
         // {
-        //     mat<4, 4, T> res;
+        //     glbMat_T<4, 4, T> res;
 
         //     const T invRightMinusLeft = static_cast<T>(1) / (right - left); 
         //     const T invTopMinusBottom = static_cast<T>(1) / (top - bottom); 
@@ -224,10 +224,10 @@ namespace glb
         // }
 
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Orthographic_LH_ZN1(T left, T right, T bottom, T top, T near, T far) noexcept
-        // GLB_INLINE constexpr mat<4, 4, T> Orthographic_LH_ZN1_YUP(T left, T right, T bottom, T top, T near, T far) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_LH_ZN1(T left, T right, T bottom, T top, T near, T far) noexcept
+        // GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_LH_ZN1_YUP(T left, T right, T bottom, T top, T near, T far) noexcept
         {
-            mat<4, 4, T> res;
+            glbMat_T<4, 4, T> res;
 
             const T invRightMinusLeft = static_cast<T>(1) / (right - left); 
             const T invTopMinusBottom = static_cast<T>(1) / (top - bottom); 
@@ -244,10 +244,10 @@ namespace glb
         }
 
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Orthographic_RH_ZN1(T left, T right, T bottom, T top, T near, T far) noexcept
-        // GLB_INLINE constexpr mat<4, 4, T> Orthographic_RH_ZN1_YUP(T left, T right, T bottom, T top, T near, T far) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_RH_ZN1(T left, T right, T bottom, T top, T near, T far) noexcept
+        // GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_RH_ZN1_YUP(T left, T right, T bottom, T top, T near, T far) noexcept
         {
-            mat<4, 4, T> res;
+            glbMat_T<4, 4, T> res;
 
             const T invRightMinusLeft = static_cast<T>(1) / (right - left); 
             const T invTopMinusBottom = static_cast<T>(1) / (top - bottom); 
@@ -264,9 +264,9 @@ namespace glb
         }
 
         // template<typename T>
-        // GLB_INLINE constexpr mat<4, 4, T> Orthographic_LH_ZN1_YDOWN(T left, T right, T bottom, T top, T near, T far) noexcept
+        // GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_LH_ZN1_YDOWN(T left, T right, T bottom, T top, T near, T far) noexcept
         // {
-        //     mat<4, 4, T> res;
+        //     glbMat_T<4, 4, T> res;
 
         //     const T invRightMinusLeft = static_cast<T>(1) / (right - left); 
         //     const T invTopMinusBottom = static_cast<T>(1) / (top - bottom); 
@@ -282,9 +282,9 @@ namespace glb
         //     return res;
         // }
         // template<typename T>
-        // GLB_INLINE constexpr mat<4, 4, T> Orthographic_RH_ZN1_YDOWN(T left, T right, T bottom, T top, T near, T far) noexcept
+        // GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic_RH_ZN1_YDOWN(T left, T right, T bottom, T top, T near, T far) noexcept
         // {
-        //     mat<4, 4, T> res;
+        //     glbMat_T<4, 4, T> res;
 
         //     const T invRightMinusLeft = static_cast<T>(1) / (right - left); 
         //     const T invTopMinusBottom = static_cast<T>(1) / (top - bottom); 
@@ -305,7 +305,7 @@ namespace glb
     namespace Mat
     {
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Perspective(T fovY, T aspect, T zNear, T zFar) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Perspective(T fovY, T aspect, T zNear, T zFar) noexcept
         {
 #           if defined(GLB_SET_COORDINATE_SYSTEM_LH)
 #               if defined(GLB_SET_Z_RANGE_0_1)
@@ -355,7 +355,7 @@ namespace glb
 
 
         template<typename T>
-        GLB_INLINE constexpr mat<4, 4, T> Orthographic(T left, T right, T bottom, T top, T near, T far) noexcept
+        GLB_INLINE constexpr glbMat_T<4, 4, T> Orthographic(T left, T right, T bottom, T top, T near, T far) noexcept
         {
 #           if defined(GLB_SET_COORDINATE_SYSTEM_LH)
 #               if defined(GLB_SET_Z_RANGE_0_1)
